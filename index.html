@@ -1,0 +1,1570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEAiCH Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0F1C; --bg2:#10182B; --bg3:#16203A;
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+  --text:#ECEFF7; --muted:#A3AEC6; --dim:#7D89A3;
+  --chalk:#5EE6C8; --amber:#FFB547; --rose:#FF8A9B; --violet:#A99BFF; --sky:#7CC4FF;
+  --paper:#FBF8F0; --rule:#C9D8EE; --margin:#E8A0A0;
+  --pen-ai:#1D4ED8; --pen-st:#262626; --pen-ok:#0F7A5C;
+  --display:'Fraunces',Georgia,serif; --body:'Inter',system-ui,sans-serif;
+  --hand:'Caveat',cursive; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--chalk)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{position:relative;padding:120px 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--chalk)}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(34px,5vw,58px);line-height:1.05}
+h2 em,h1 em{font-style:italic;font-weight:400;color:var(--chalk)}
+.lede{color:var(--muted);font-size:clamp(17px,1.6vw,20px);max-width:680px}
+.sample{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(255,181,71,.4);padding:3px 8px;border-radius:999px}
+
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--chalk),var(--amber));z-index:60}
+nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.top.scrolled{background:rgba(10,15,28,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo .i{color:var(--chalk);font-style:italic}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 200deg,var(--chalk),var(--sky),var(--violet),var(--chalk));display:grid;place-items:center;color:#06121a;font-weight:700;font-size:15px;font-family:var(--body)}
+.navlinks{display:flex;gap:4px;align-items:center}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.navlinks a:hover,.navlinks a.on{color:var(--text);background:rgba(255,255,255,.06)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:600;font-size:15px;min-height:44px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn.primary{background:var(--chalk);color:#04211b;box-shadow:0 0 0 0 rgba(94,230,200,.5)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(94,230,200,.55)}
+.btn.ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line2)}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.btn.small{padding:8px 14px;font-size:13px;min-height:36px}
+#presentBtn[aria-pressed="true"]{background:var(--amber);color:#2a1a00;border-color:transparent}
+@media (max-width:900px){.navlinks a{display:none}}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden}
+#glyphs{position:absolute;inset:0;width:100%;height:100%}
+.hero-glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(94,230,200,.13),transparent 60%);top:-260px;right:-260px;pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+#hero h1{font-size:clamp(46px,7.4vw,104px);line-height:.98;margin:22px 0 26px}
+.rot{display:inline-block;position:relative;color:var(--chalk);font-style:italic;font-weight:400;white-space:nowrap}
+.rot span{display:inline-block;transition:opacity .45s,transform .45s,filter .45s}
+.rot span.out{opacity:0;transform:translateY(-30%);filter:blur(6px)}
+.rot span.in{opacity:0;transform:translateY(30%);filter:blur(6px)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line2);border-radius:22px;padding:22px;backdrop-filter:blur(8px);transform-style:preserve-3d;transition:transform .2s ease-out}
+.hero-card .chat{display:flex;flex-direction:column;gap:12px}
+.bubble{padding:12px 15px;border-radius:16px;font-size:15px;line-height:1.45;max-width:92%;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.bubble.show{opacity:1;transform:none}
+.bubble.st{align-self:flex-end;background:var(--bg3);border:1px solid var(--line2)}
+.bubble.ai{background:rgba(94,230,200,.1);border:1px solid rgba(94,230,200,.3)}
+.bubble .src{display:block;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--chalk)}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 0 rgba(255,138,155,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(255,138,155,0)}100%{box-shadow:0 0 0 0 rgba(255,138,155,0)}}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollcue::after{content:"";width:1px;height:40px;background:linear-gradient(var(--dim),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:900px){.hero-inner{grid-template-columns:1fr}.rot{white-space:normal}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* drift */
+.drift-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;margin-top:56px}
+.chartbox{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:22px}
+.chartbox svg{width:100%;height:auto;display:block}
+.curve{fill:none;stroke-width:3.5;stroke-linecap:round}
+.chartbox .tag{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.scrub{display:flex;align-items:center;gap:14px;margin-top:14px;font-size:13px;color:var(--muted)}
+.scrub input{flex:1;accent-color:var(--chalk)}
+.problems{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.prob{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:20px;transition:border-color .3s,transform .3s}
+.prob:hover{border-color:rgba(94,230,200,.4);transform:translateY(-3px)}
+.prob b{display:block;font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:6px}
+.prob p{margin:0;color:var(--muted);font-size:15px}
+.prob .n{font-family:var(--mono);font-size:12px;color:var(--chalk)}
+@media (max-width:900px){.drift-grid{grid-template-columns:1fr}.problems{grid-template-columns:1fr}}
+
+/* lesson / whiteboard */
+#lesson{background:radial-gradient(ellipse at 50% 0%,rgba(124,196,255,.08),transparent 60%)}
+.lesson-grid{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:48px;align-items:start}
+.board-shell{border-radius:22px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 40px 80px -30px rgba(0,0,0,.7);background:var(--paper)}
+.board-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 14px;background:#EFEADF;border-bottom:1px solid #DDD5C4;color:#3a3a3a;font-size:13px}
+.board-bar .t{font-weight:600;display:flex;align-items:center;gap:8px}
+.board-bar .ctrls{display:flex;gap:6px;flex-wrap:wrap}
+.bb{border:1px solid #CFC6B3;background:#fff;color:#2b2b2b;border-radius:8px;padding:6px 11px;font-size:13px;min-height:34px}
+.bb:hover{background:#f7f3ea}
+.bb[aria-pressed="true"]{background:#2b2b2b;color:#fff;border-color:#2b2b2b}
+.board{position:relative;min-height:640px;max-height:720px;overflow:auto;padding:22px 26px 40px 108px;
+  background:
+   linear-gradient(90deg,transparent 92px,var(--margin) 92px,var(--margin) 94px,transparent 94px),
+   repeating-linear-gradient(180deg,transparent 0,transparent 39px,var(--rule) 39px,var(--rule) 40px),var(--paper);
+  background-attachment:local;scroll-behavior:smooth;color:var(--pen-st)}
+.board::before{content:"";position:absolute;left:20px;top:0;bottom:0;width:22px;background:radial-gradient(circle at 11px 20px,#d9d2c3 6px,transparent 7px) 0 0/22px 40px repeat-y;opacity:.9}
+.hw{position:relative;font-family:var(--hand);font-size:27px;line-height:40px;min-height:40px;white-space:nowrap}
+.hw .who{position:absolute;left:-98px;width:88px;text-align:right;font-size:19px;color:#8b8b8b;font-weight:500}
+.hw .ink{display:inline-block;white-space:nowrap;overflow:hidden;vertical-align:bottom}
+.hw.ai{color:var(--pen-ai)}
+.hw.st{color:var(--pen-st)}
+.hw.ok{color:var(--pen-ok);font-weight:700}
+.hw.q{color:#3b3b3b}
+.hw.indent{padding-left:40px}
+.hw .pen{position:absolute;top:6px;width:14px;height:14px;margin-left:-2px;border-radius:50% 50% 50% 0;background:currentColor;transform:rotate(-45deg);opacity:.75;pointer-events:none}
+.boxed{display:inline-block;border:2.5px solid var(--pen-st);border-radius:6px 10px 5px 12px/10px 5px 12px 6px;padding:0 10px;line-height:34px;transform:rotate(-1deg)}
+.hw input{font-family:var(--hand);font-size:27px;width:92px;border:0;border-bottom:2px dashed #888;background:transparent;color:var(--pen-st);padding:0 4px;outline:none}
+.hw input:focus{border-bottom-color:var(--pen-ai)}
+.ask-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;white-space:normal}
+.ask-actions{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px;font-family:var(--body)}
+.ask-actions button{font-size:13px;border-radius:8px;padding:7px 12px;min-height:36px;border:1px solid #bdb5a3;background:#fff;color:#222}
+.ask-actions button.go{background:var(--pen-ai);border-color:var(--pen-ai);color:#fff}
+.board-start{position:absolute;inset:0;display:grid;place-items:center;background:rgba(251,248,240,.6);backdrop-filter:blur(2px);z-index:3}
+.side{display:flex;flex-direction:column;gap:14px}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:16px}
+.panel h3{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.solver{font-family:var(--mono);font-size:13px;line-height:1.75;color:var(--text);filter:blur(5px);transition:filter .4s;user-select:none}
+.solver.peek{filter:none;user-select:text}
+.solver .okk{color:var(--chalk)}
+.lockline{font-size:13px;color:var(--muted);margin-top:8px}
+.switch{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted);cursor:pointer}
+.switch input{accent-color:var(--chalk);width:16px;height:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line2);color:var(--text)}
+.chip.c{border-color:rgba(94,230,200,.4);color:var(--chalk)}
+.meter{display:flex;gap:6px;margin-top:4px}
+.meter i{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.1);transition:background .3s}
+.meter i.used{background:var(--amber)}
+#evlog{list-style:none;margin:0;padding:0;font-size:13px;max-height:190px;overflow:auto;display:flex;flex-direction:column;gap:6px}
+#evlog li{display:flex;gap:8px;align-items:baseline;animation:slidein .4s ease-out}
+#evlog time{font-family:var(--mono);font-size:11px;color:var(--dim);flex:none}
+#evlog .k{font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:4px;flex:none}
+@keyframes slidein{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+@media (max-width:980px){.lesson-grid{grid-template-columns:1fr}.board{padding-left:70px;background:linear-gradient(90deg,transparent 58px,var(--margin) 58px,var(--margin) 60px,transparent 60px),repeating-linear-gradient(180deg,transparent 0,transparent 39px,var(--rule) 39px,var(--rule) 40px),var(--paper);background-attachment:local}.board::before{left:8px}.hw .who{left:-64px;width:56px;font-size:15px}.hw{font-size:23px}.hw input{font-size:23px;width:70px}}
+
+/* minds */
+.minds{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:48px}
+.mtabs{display:flex;flex-direction:column;gap:10px}
+.mtab{text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;color:var(--text);transition:all .25s;position:relative;overflow:hidden}
+.mtab b{display:block;font-family:var(--display);font-size:19px;font-weight:600}
+.mtab span{font-size:14px;color:var(--muted)}
+.mtab[aria-selected="true"]{border-color:var(--chalk);background:linear-gradient(90deg,rgba(94,230,200,.12),var(--bg2))}
+.mtab .bar{position:absolute;left:0;bottom:0;height:2px;background:var(--chalk);width:0}
+.mtab[aria-selected="true"] .bar{animation:fillbar 7s linear forwards}
+@keyframes fillbar{to{width:100%}}
+.mstage{background:var(--bg2);border:1px solid var(--line);border-radius:22px;min-height:440px;padding:28px;position:relative;overflow:hidden}
+.mpane{display:none;animation:fadeup .6s ease-out}
+.mpane.on{display:block}
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.mpane svg{width:100%;height:auto;display:block}
+.story p{font-family:var(--display);font-size:clamp(20px,2.2vw,26px);line-height:1.5;margin:0 0 16px;opacity:0;transform:translateY(10px);transition:all .7s}
+.story p.on{opacity:1;transform:none}
+.story mark{background:rgba(255,181,71,.18);color:var(--amber);padding:0 4px;border-radius:4px}
+.alg{font-family:var(--mono);font-size:clamp(16px,1.9vw,21px);line-height:2.2}
+.alg div{opacity:0;transform:translateX(-10px);transition:all .5s}
+.alg div.on{opacity:1;transform:none}
+.alg .c{color:var(--dim);font-family:var(--body);font-size:14px;margin-left:12px}
+.profile-note{margin-top:18px;font-size:14px;color:var(--muted)}
+.profile-note .sample{margin-right:8px}
+@media (max-width:900px){.minds{grid-template-columns:1fr}.mtabs{flex-direction:row;overflow-x:auto}.mtab{min-width:200px}}
+
+/* graph */
+.graph-wrap{position:relative;margin-top:44px;background:radial-gradient(ellipse at center,var(--bg3),var(--bg2) 70%);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+#kg{display:block;width:100%;height:560px;cursor:grab;touch-action:none}
+#kg.drag{cursor:grabbing}
+.legend{position:absolute;left:16px;top:16px;display:flex;flex-wrap:wrap;gap:8px 14px;max-width:calc(100% - 32px);font-size:12px;color:var(--muted);pointer-events:none}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%}
+#kgtip{position:absolute;pointer-events:none;background:rgba(10,15,28,.94);border:1px solid var(--line2);border-radius:12px;padding:10px 12px;font-size:13px;max-width:260px;opacity:0;transition:opacity .15s;z-index:4}
+#kgtip b{display:block;font-size:14px;margin-bottom:2px}
+#kgtip .ty{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.graph-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.gf{padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--bg2)}
+.gf b{font-family:var(--display);font-size:18px;display:block;margin-bottom:4px}
+.gf p{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:800px){.graph-foot{grid-template-columns:1fr}#kg{height:460px}}
+
+/* loop */
+.loop-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:40px}
+#loopsvg{width:100%;max-width:520px;height:auto;display:block;margin:0 auto}
+.lnode{cursor:pointer}
+.lnode circle.ring{transition:stroke .3s,r .3s}
+.lnode:hover circle.ring,.lnode.on circle.ring{stroke:var(--chalk)}
+.lnode:focus{outline:none}
+.lnode:focus-visible circle.ring{stroke:var(--amber);stroke-width:3}
+.loop-detail{min-height:260px}
+.loop-detail .step{font-family:var(--mono);font-size:12px;color:var(--chalk);letter-spacing:.14em;text-transform:uppercase}
+.loop-detail h3{font-size:34px;margin:8px 0 12px}
+.loop-detail p{color:var(--muted);margin:0 0 14px}
+.loop-detail ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.loop-detail li{padding-left:22px;position:relative;font-size:15px}
+.loop-detail li::before{content:"";position:absolute;left:0;top:9px;width:10px;height:10px;border-radius:3px;background:var(--chalk);transform:rotate(45deg)}
+@media (max-width:900px){.loop-grid{grid-template-columns:1fr}}
+
+/* teacher */
+#teacher{background:linear-gradient(180deg,transparent,rgba(169,155,255,.05) 40%,transparent)}
+.console{margin-top:44px;display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.console > *,.mgrid > *,.lesson-grid > *,.drift-grid > *,.minds > *{min-width:0}
+.heat{width:100%;border-collapse:separate;border-spacing:5px;font-size:13px}
+.heat th{font-weight:500;color:var(--muted);text-align:center;padding:4px;font-size:12px}
+.heat th[scope="row"]{text-align:left;white-space:nowrap}
+.heat th[scope="row"] button{background:none;border:0;color:var(--text);padding:6px 4px;font-size:14px;min-height:36px;border-radius:8px}
+.heat th[scope="row"] button:hover,.heat tr.sel th[scope="row"] button{color:var(--chalk);background:rgba(94,230,200,.08)}
+.heat td{height:38px;border-radius:9px;transition:background .6s,transform .3s;position:relative}
+.heat td.flash{transform:scale(1.12);box-shadow:0 0 0 2px var(--text)}
+.hl{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-top:10px}
+.hl span{display:flex;align-items:center;gap:6px}
+.hl i{width:12px;height:12px;border-radius:4px}
+#feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;max-height:230px;overflow:hidden}
+#feed li{padding:10px 12px;border-radius:12px;background:var(--bg3);border:1px solid var(--line);font-size:14px;animation:slidein .5s ease-out;display:flex;gap:10px;align-items:flex-start}
+#feed li .dot{width:8px;height:8px;border-radius:50%;margin-top:7px;flex:none}
+.rules label{display:flex;flex-direction:column;gap:6px;font-size:14px;margin-bottom:14px;color:var(--text)}
+.rules select,.rules input[type=range]{font:inherit;font-size:14px;padding:9px 10px;border-radius:10px;background:var(--bg3);color:var(--text);border:1px solid var(--line2);min-height:42px;accent-color:var(--chalk)}
+.rules .row{flex-direction:row;align-items:center;justify-content:space-between;min-height:40px}
+.rules .row input{width:20px;height:20px;accent-color:var(--chalk)}
+.tie{font-size:13px;color:var(--amber);display:flex;gap:8px;align-items:flex-start}
+.profile{display:none}
+.profile.on{display:block;animation:fadeup .5s}
+.profile .big{font-family:var(--display);font-size:26px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:12px 0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.spark{width:100%;height:46px}
+@media (max-width:980px){.console{grid-template-columns:1fr}}
+
+/* principles */
+.princ{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;perspective:1000px}
+.pc{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:24px;transition:transform .25s ease-out,border-color .3s;transform-style:preserve-3d;position:relative;overflow:hidden}
+.pc::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(94,230,200,.12),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
+.pc:hover::after{opacity:1}
+.pc:hover{border-color:rgba(94,230,200,.35)}
+.pc .num{font-family:var(--display);font-style:italic;font-size:44px;color:var(--chalk);line-height:1}
+.pc b{display:block;font-family:var(--display);font-size:21px;margin:10px 0 6px}
+.pc p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:900px){.princ{grid-template-columns:1fr}}
+
+/* pilot */
+#pilot{padding:140px 0 100px;text-align:center;overflow:hidden}
+#pilot h2{font-size:clamp(40px,6.4vw,84px)}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:56px auto 48px;max-width:980px;text-align:left}
+.rd{padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--bg2);position:relative}
+.rd .ph{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--chalk);text-transform:uppercase}
+.rd b{display:block;font-family:var(--display);font-size:22px;margin:6px 0}
+.rd p{margin:0;color:var(--muted);font-size:14px}
+.rd.now{border-color:var(--chalk);box-shadow:0 0 0 1px var(--chalk),0 20px 50px -20px rgba(94,230,200,.4)}
+.ph-hold{color:var(--amber);font-family:var(--mono);font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;text-align:center}
+@media (max-width:900px){.road{grid-template-columns:1fr}}
+
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--text);color:var(--bg);padding:12px 18px;border-radius:12px;font-size:14px;font-weight:500;z-index:80;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+#toast.on{transform:translateX(-50%) translateY(0)}
+#presentHint{position:fixed;right:20px;bottom:20px;z-index:55;background:rgba(16,24,43,.92);border:1px solid var(--line2);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--muted);display:none;font-family:var(--mono)}
+body.presenting #presentHint{display:block}
+body.presenting section{min-height:100vh}
+
+/* lesson tabs + 3D model */
+.ltabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
+.ltab{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px 18px;color:var(--text);text-align:left;min-height:44px;transition:all .25s}
+.ltab span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ltab b{font-family:var(--display);font-size:18px;font-weight:600}
+.ltab[aria-selected="true"]{border-color:var(--chalk);background:linear-gradient(180deg,rgba(94,230,200,.12),var(--bg2))}
+.ltabs + .lesson-grid{margin-top:18px}
+#shed3d{display:block;width:100%;height:250px;cursor:grab;touch-action:none;border-radius:12px;background:radial-gradient(ellipse at center,var(--bg3),var(--bg2) 75%)}
+#shed3d.drag{cursor:grabbing}
+#shedCap{min-height:21px;color:var(--amber)}
+.ask-actions button.oops{border-color:#E8A0A0;color:#9F1D2C}
+
+/* mistakes */
+#mistakes{background:radial-gradient(ellipse at 15% 30%,rgba(255,138,155,.07),transparent 60%)}
+.mlist{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
+.mbtn{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px 16px;color:var(--text);text-align:left;min-height:44px;transition:all .25s}
+.mbtn small{display:block;font-family:var(--mono);font-size:11px;color:var(--rose);letter-spacing:.08em;text-transform:uppercase}
+.mbtn[aria-selected="true"]{border-color:var(--rose);background:linear-gradient(180deg,rgba(255,138,155,.12),var(--bg2))}
+.mgrid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;margin-top:18px;align-items:start}
+.mcol{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:20px;min-height:420px}
+.mcol h4{margin:0 0 12px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.mcol h4 i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;color:#0A0F1C;font-weight:700}
+.mpaper{background:repeating-linear-gradient(180deg,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px),var(--paper);color:var(--pen-st);border-color:#DDD5C4}
+.mpaper h4{color:#6B6B6B}
+.mmeta{font-size:13px;color:#6B6B6B;margin-bottom:6px}
+.hwl{font-family:var(--hand);font-size:25px;line-height:36px;animation:inkin .9s ease-out both}
+@keyframes inkin{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.slip{color:#B42318;text-decoration:underline wavy #D92D20;text-decoration-thickness:1.5px;text-underline-offset:6px}
+.redpen{font-family:var(--hand);color:#C8102E;font-size:24px;transform:rotate(-3deg);margin-top:14px;min-height:30px}
+.redpen:not(:empty){animation:inkin .8s ease-out both}
+.ai-diag{font-family:var(--display);font-size:22px;margin-bottom:10px}
+.ai-say{background:rgba(94,230,200,.08);border:1px solid rgba(94,230,200,.25);border-radius:14px;padding:11px 14px;font-size:15px;margin-bottom:10px;animation:fadeup .6s ease-out both}
+.mvis svg{width:100%;height:auto;display:block;margin:4px 0 8px}
+.mthen{font-size:14px;color:var(--muted);margin-bottom:12px}
+.tstat{font-family:var(--display);font-size:46px;color:var(--amber);line-height:1}
+.tstat span{font-size:18px;color:var(--muted);font-family:var(--body)}
+.mcol p{margin:8px 0;color:var(--text);font-size:15px}
+.tact{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.tact button{text-align:left;background:var(--bg3);border:1px solid var(--line2);color:var(--text);border-radius:12px;padding:10px 14px;min-height:44px;font-size:14px;transition:border-color .2s}
+.tact button:hover{border-color:var(--violet)}
+.tact button.done{border-color:var(--chalk);color:var(--chalk)}
+.tact button.done::before{content:"✓ "}
+.guided{border:1px dashed var(--violet);border-radius:14px;padding:11px 14px;font-size:14px;margin-top:12px;animation:fadeup .5s}
+.guided b{color:var(--violet);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px}
+@media (max-width:980px){.mgrid{grid-template-columns:1fr}.mcol{min-height:0}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@media (max-width:600px){.wrap{padding:0 16px}section{padding:84px 0}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav class="top" id="nav" aria-label="Sections">
+  <a class="logo" href="#hero"><span class="mark">T</span><span>TEA<span class="i">i</span>CH</span></a>
+  <div class="navlinks">
+    <a href="#drift">Why</a>
+    <a href="#lesson">Live lessons</a>
+    <a href="#mistakes">Mistakes</a>
+    <a href="#minds">Every mind</a>
+    <a href="#graph">Curriculum</a>
+    <a href="#teacher">Teachers</a>
+    <a href="#pilot">Pilot</a>
+    <button class="btn ghost small" id="presentBtn" aria-pressed="false" title="Arrow keys move between sections">Present</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="glyphs" aria-hidden="true"></canvas>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow rv">An AI teaching guide for school mathematics</div>
+      <h1 class="rv d1">Maths, taught<br>the way <span class="rot" id="rot"><span>your teacher does.</span></span></h1>
+      <p class="lede rv d2">Students don't stop loving maths. They lose the thread, and then they stop trying. TEAiCH learns how each student understands, then teaches from <em>their own class notes and textbook</em> on a live whiteboard, step by step, with the teacher as its guardrail.</p>
+      <div class="hero-cta rv d3">
+        <a class="btn primary" href="#lesson">Watch a live lesson <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#teacher">How teachers stay in control</a>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="hero-card" id="heroCard">
+        <div class="live"><i></i> Tutor session · Chapter 5, Arithmetic Progressions</div>
+        <div class="chat" id="heroChat">
+          <div class="bubble st">Just tell me how many rows there are.</div>
+          <div class="bubble ai">Let's find it together, like Ms. Rao did on Monday. From 23 plants to 21, what changes each row?<span class="src">Hint 1 of 3 · your class note, 14 Oct · Textbook 5.2</span></div>
+          <div class="bubble st">It drops by 2… so d = −2?</div>
+          <div class="bubble ai">Exactly. Now you know a, d and the last term. Which formula connects them?<span class="src">Teacher sees: tried before asking ✓</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</section>
+
+<!-- DRIFT -->
+<section id="drift">
+  <div class="wrap">
+    <div class="eyebrow rv">The problem</div>
+    <h2 class="rv d1">Nobody hates maths on day one.<br><em>They drift.</em></h2>
+    <p class="lede rv d2">One missed explanation becomes a gap, the gap becomes confusion, and confusion becomes "I'm just not a maths person". Every student needs the concept explained a different way, and a class of forty gets one explanation.</p>
+    <div class="drift-grid">
+      <div class="chartbox rv">
+        <svg viewBox="0 0 620 330" role="img" aria-label="Illustration: a student's confidence across a term, falling after a missed concept without support, recovering when TEAiCH catches the gap">
+          <defs>
+            <linearGradient id="gW" x1="0" x2="1"><stop offset="0" stop-color="#FF8A9B"/><stop offset="1" stop-color="#FF8A9B" stop-opacity=".6"/></linearGradient>
+            <linearGradient id="gT" x1="0" x2="1"><stop offset="0" stop-color="#5EE6C8"/><stop offset="1" stop-color="#7CC4FF"/></linearGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,.07)">
+            <line x1="40" y1="40" x2="600" y2="40"/><line x1="40" y1="120" x2="600" y2="120"/><line x1="40" y1="200" x2="600" y2="200"/><line x1="40" y1="280" x2="600" y2="280"/>
+          </g>
+          <text class="tag" x="40" y="30">Loves it</text>
+          <text class="tag" x="40" y="300">Avoids it</text>
+          <text class="tag" x="560" y="320">Week 12</text>
+          <text class="tag" x="40" y="320">Week 1</text>
+          <path id="cW" class="curve" stroke="url(#gW)" d="M40,70 C120,66 150,72 190,92 S250,150 300,170 S400,220 460,248 S560,272 600,276"/>
+          <path id="cT" class="curve" stroke="url(#gT)" d="M40,70 C120,66 150,72 190,92 S240,128 262,124 S330,92 400,78 S540,58 600,52"/>
+          <g id="missMark" opacity="0">
+            <circle cx="190" cy="92" r="7" fill="#FFB547"/>
+            <text x="200" y="110" fill="#FFB547" font-size="13" font-family="Inter">missed "common difference"</text>
+          </g>
+          <g id="catchMark" opacity="0">
+            <circle cx="262" cy="124" r="7" fill="#5EE6C8"/>
+            <text x="232" y="160" fill="#5EE6C8" font-size="13" font-family="Inter">TEAiCH re-teaches it visually</text>
+          </g>
+          <circle id="scrubDotW" r="6" fill="#FF8A9B" opacity="0"/>
+          <circle id="scrubDotT" r="6" fill="#5EE6C8" opacity="0"/>
+        </svg>
+        <div class="scrub"><label for="weekScrub">Scrub the term</label><input id="weekScrub" type="range" min="0" max="100" value="100"><span id="weekLbl">Week 12</span></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px">
+          <span><b style="color:var(--rose)">━</b> without support</span><span><b style="color:var(--chalk)">━</b> with TEAiCH</span><span class="sample">Illustration</span>
+        </div>
+      </div>
+      <div class="problems">
+        <div class="prob rv"><span class="n">01</span><b>It doesn't know the student</b><p>General chat tools don't know what was taught in class, how the teacher explained it, or what this student already understands.</p></div>
+        <div class="prob rv d1"><span class="n">02</span><b>Answers replace thinking</b><p>A full solution arrives in seconds. Copying it feels like learning; the gap shows up in the exam.</p></div>
+        <div class="prob rv d2"><span class="n">03</span><b>Teachers can't see it</b><p>Who is stuck, on what, and how they use AI at home is invisible, so nobody steps in early.</p></div>
+        <div class="prob rv d3"><span class="n">04</span><b>One explanation, forty minds</b><p>Some students see it, some need a story, some need the algebra. Class time allows one way.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LESSON -->
+<section id="lesson">
+  <div class="wrap">
+    <div class="eyebrow rv">Live demo · try it</div>
+    <h2 class="rv d1">It solves first, in the background.<br><em>Then it teaches.</em></h2>
+    <p class="lede rv d2">TEAiCH never acts like a super-intelligent answer machine. It already knows the answer, checked by code. On the whiteboard it writes with the student, one step at a time, and waits for them. Type your own answers, let the student answer, or make a typical mistake and watch how it re-teaches.</p>
+
+    <div class="ltabs rv d3" role="tablist" aria-label="Lessons">
+      <button class="ltab" role="tab" aria-selected="true" data-l="ap" type="button"><span>Class 10 · Arithmetic progressions</span><b>The flower bed</b></button>
+      <button class="ltab" role="tab" aria-selected="false" data-l="shed" type="button"><span>Class 10 · Surface areas and volumes</span><b>The shed: volume and sheet metal</b></button>
+    </div>
+    <div class="lesson-grid">
+      <div class="board-shell rv">
+        <div class="board-bar">
+          <span class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> <span id="boardTitle">Working area · Class 10 · AP</span></span>
+          <span class="ctrls">
+            <button class="bb" id="restartBtn" type="button">Restart</button>
+            <button class="bb" id="speedBtn" type="button" aria-pressed="false">Speed ×2</button>
+          </span>
+        </div>
+        <div class="board" id="board" aria-live="polite">
+          <div class="board-start" id="boardStart"><button class="btn primary" id="startBtn" type="button">Start the lesson ▸</button></div>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="panel" id="modelPanel" hidden>
+          <h3>Visual aid · drag to turn <button class="bb" id="explodeBtn" type="button" style="letter-spacing:0;text-transform:none">Take apart</button></h3>
+          <canvas id="shed3d" aria-label="3D model of the shed: a cuboid with half a cylinder on top"></canvas>
+          <div class="lockline" id="shedCap"></div>
+        </div>
+        <div class="panel rv d1">
+          <h3>Solved in the background <label class="switch"><input type="checkbox" id="peek"> peek</label></h3>
+          <div class="solver" id="solver">
+            a = 23, d = 21 − 23 = −2, aₙ = 5<br>
+            5 = 23 + (n − 1)(−2)<br>
+            n − 1 = 9 → n = 10<br>
+            <span class="okk">✓ code check: 23, 21, …, 5 → 10 terms</span>
+          </div>
+          <div class="lockline">Hidden from the student. The board only reveals what they reach.</div>
+        </div>
+        <div class="panel rv d2">
+          <h3>Grounded in</h3>
+          <div class="chips" id="chips">
+            <span class="chip c">Textbook · Ch 5 · nth term of an AP</span>
+            <span class="chip">Class note · 14 Oct</span>
+            <span class="chip">Teacher's worked example</span>
+          </div>
+        </div>
+        <div class="panel rv d3">
+          <h3>Teacher's rule <span id="ruleLbl" style="letter-spacing:0;text-transform:none;font-family:var(--body);color:var(--amber)">3 hints · after attempt</span></h3>
+          <div class="meter" id="hintMeter"></div>
+          <div class="lockline" id="hintTxt">Hints used: 0</div>
+        </div>
+        <div class="panel rv d4">
+          <h3>Sent to the teacher <span style="letter-spacing:0;text-transform:none;font-family:var(--body)">live</span></h3>
+          <ul id="evlog"><li style="color:var(--dim)">Waiting for the lesson to start…</li></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- MISTAKES -->
+<section id="mistakes">
+  <div class="wrap">
+    <div class="eyebrow rv">When a student gets it wrong</div>
+    <h2 class="rv d1">A wrong answer is<br><em>where teaching starts.</em></h2>
+    <p class="lede rv d2">The AI never just marks it wrong. It finds the exact slip, says what was right, and re-teaches that one idea with a picture, without giving the answer away. The teacher sees the same slip across the class and decides how the AI should teach it next. Pick a mistake from the shed lesson, then act as the teacher.</p>
+    <div class="mlist rv" role="tablist" aria-label="Student mistakes" id="mlist"></div>
+    <div class="mgrid rv">
+      <div class="mcol mpaper"><h4><i style="background:#262626;color:#fff">1</i>The student wrote</h4><div id="mStudent"></div></div>
+      <div class="mcol"><h4><i style="background:var(--chalk)">2</i>The AI responds</h4><div id="mAI" aria-live="polite"></div></div>
+      <div class="mcol"><h4><i style="background:var(--violet)">3</i>The teacher sees and acts</h4><div id="mTeacher"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MINDS -->
+<section id="minds">
+  <div class="wrap">
+    <div class="eyebrow rv">Personalised explanation</div>
+    <h2 class="rv d1">Same concept.<br><em>Four ways in.</em></h2>
+    <p class="lede rv d2">Not every student understands the same idea the same way. TEAiCH notices which explanations work for each learner and generates the next one in that style, with visuals, patterns, stories or algebra, all from the same textbook item.</p>
+    <div class="minds">
+      <div class="mtabs" role="tablist" aria-label="Explanation styles">
+        <button class="mtab" role="tab" aria-selected="true" data-p="see"><b>See it</b><span>The flower bed, row by row</span><i class="bar"></i></button>
+        <button class="mtab" role="tab" aria-selected="false" data-p="pattern"><b>Spot the pattern</b><span>Jumps on a number line</span><i class="bar"></i></button>
+        <button class="mtab" role="tab" aria-selected="false" data-p="story"><b>Tell it as a story</b><span>The gardener's problem</span><i class="bar"></i></button>
+        <button class="mtab" role="tab" aria-selected="false" data-p="alg"><b>Do the algebra</b><span>The formula, line by line</span><i class="bar"></i></button>
+      </div>
+      <div class="mstage rv">
+        <div class="mpane on" id="p-see" role="tabpanel">
+          <svg id="bedSvg" viewBox="0 0 640 380" role="img" aria-label="Ten rows of roses: 23, 21, 19 and so on down to 5"></svg>
+        </div>
+        <div class="mpane" id="p-pattern" role="tabpanel">
+          <svg id="lineSvg" viewBox="0 0 640 300" role="img" aria-label="Number line with jumps of minus 2 from 23 to 5: nine jumps, ten rows"></svg>
+        </div>
+        <div class="mpane story" id="p-story" role="tabpanel">
+          <p>A gardener plants <mark>23 roses</mark> in the first row.</p>
+          <p>Every new row, she plants <mark>2 fewer</mark> than the row before.</p>
+          <p>She stops when a row has only <mark>5</mark>. So she has dropped from 23 to 5: that is 18 roses' worth of "fewer".</p>
+          <p>18 ÷ 2 = <mark>9 times</mark> she took two away. Nine steps after the first row…</p>
+          <p>…means <mark>10 rows</mark> in the bed.</p>
+        </div>
+        <div class="mpane alg" id="p-alg" role="tabpanel">
+          <div>aₙ = a + (n − 1)d <span class="c">the nth term</span></div>
+          <div>5 = 23 + (n − 1)(−2) <span class="c">substitute a = 23, d = −2, aₙ = 5</span></div>
+          <div>−18 = (n − 1)(−2) <span class="c">subtract 23</span></div>
+          <div>9 = n − 1 <span class="c">divide by −2</span></div>
+          <div style="color:var(--chalk)">n = 10 <span class="c">rows</span></div>
+        </div>
+        <div class="profile-note"><span class="sample">Learner profile</span> Aarav learns best by <b style="color:var(--text)">seeing it</b>; the tutor opens with the flower bed. His teacher can change this.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAPH -->
+<section id="graph">
+  <div class="wrap">
+    <div class="eyebrow rv">Trained on the curriculum, not the internet</div>
+    <h2 class="rv d1">The textbook,<br><em>as connected knowledge.</em></h2>
+    <p class="lede rv d2">TEAiCH reads the school's curriculum and the student's own class notes. Every definition, theorem, property, derivation, formula, graph, example and exercise becomes a checked item in the book's own words, linked to what it needs first and what builds on it. Drag the nodes; hover to see what each one is.</p>
+    <div class="graph-wrap rv">
+      <canvas id="kg" aria-label="Interactive knowledge graph of the Arithmetic Progressions chapter"></canvas>
+      <div class="legend" id="kgLegend"></div>
+      <div id="kgtip" role="status"></div>
+    </div>
+    <div class="graph-foot">
+      <div class="gf rv"><b>Answers only from the book</b><p>The tutor cites the item it used. Outside the syllabus, it says so.</p></div>
+      <div class="gf rv d1"><b>Finds the real gap</b><p>Stuck on n? The graph points back to linear equations from Class 9.</p></div>
+      <div class="gf rv d2"><b>Your notes, linked</b><p>Each handwritten note attaches to the concept it belongs to.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOP -->
+<section id="loop">
+  <div class="wrap">
+    <div class="eyebrow rv">How it fits school</div>
+    <h2 class="rv d1">Three apps.<br><em>One learning loop.</em></h2>
+    <div class="loop-grid">
+      <svg id="loopsvg" viewBox="0 0 500 480" role="group" aria-label="The learning loop: Notebook, AI tutor, Teacher console">
+        <defs>
+          <linearGradient id="ring" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#5EE6C8"/><stop offset=".5" stop-color="#7CC4FF"/><stop offset="1" stop-color="#A99BFF"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="250" cy="250" r="170" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+        <path id="orbit" d="M250,80 A170,170 0 1,1 249.9,80" fill="none" stroke="url(#ring)" stroke-width="2" stroke-dasharray="4 10"/>
+        <circle r="7" fill="#5EE6C8" filter="url(#glow)"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#orbit"/></animateMotion></circle>
+        <circle r="5" fill="#A99BFF" filter="url(#glow)"><animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite"><mpath href="#orbit"/></animateMotion></circle>
+        <text x="250" y="244" text-anchor="middle" fill="#ECEFF7" font-family="Fraunces" font-size="22" font-style="italic">the student</text>
+        <text x="250" y="268" text-anchor="middle" fill="#A3AEC6" font-family="Inter" font-size="12">back on track</text>
+        <g class="lnode on" data-i="0" tabindex="0" role="button" aria-label="Notebook">
+          <circle class="ring" cx="250" cy="80" r="52" fill="#10182B" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
+          <path d="M236,62 h22 a4,4 0 0 1 4,4 v30 h-26 a4,4 0 0 1 -4,-4 v-26 a4,4 0 0 1 4,-4z M242,72 h14 M242,80 h14 M242,88 h8" fill="none" stroke="#5EE6C8" stroke-width="2" stroke-linecap="round"/>
+          <text x="250" y="156" text-anchor="middle" fill="#ECEFF7" font-family="Inter" font-weight="600" font-size="15">Notebook</text>
+        </g>
+        <g class="lnode" data-i="1" tabindex="0" role="button" aria-label="AI tutor">
+          <circle class="ring" cx="397" cy="335" r="52" fill="#10182B" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
+          <path d="M379,322 h36 v22 h-22 l-8,8 v-8 h-6z M387,331 h20 M387,337 h12" fill="none" stroke="#7CC4FF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <text x="397" y="411" text-anchor="middle" fill="#ECEFF7" font-family="Inter" font-weight="600" font-size="15">AI tutor</text>
+        </g>
+        <g class="lnode" data-i="2" tabindex="0" role="button" aria-label="Teacher console">
+          <circle class="ring" cx="103" cy="335" r="52" fill="#10182B" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
+          <path d="M85,322 h36 v24 h-36z M91,340 v-6 M99,340 v-10 M107,340 v-4 M115,340 v-12 M97,352 h12" fill="none" stroke="#A99BFF" stroke-width="2" stroke-linecap="round"/>
+          <text x="103" y="411" text-anchor="middle" fill="#ECEFF7" font-family="Inter" font-weight="600" font-size="15">Teacher console</text>
+        </g>
+      </svg>
+      <div class="loop-detail" id="loopDetail" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER -->
+<section id="teacher">
+  <div class="wrap">
+    <div class="eyebrow rv">Teachers are the guardrail</div>
+    <h2 class="rv d1">See every learner.<br><em>Shape every path.</em></h2>
+    <p class="lede rv d2">Every question, hint and attempt becomes a picture of understanding, concept by concept. Teachers review the interactions, set what the tutor may do for each student, and fine-tune the concepts each one needs next. <span class="sample">Sample data</span></p>
+    <div class="console">
+      <div class="panel rv">
+        <h3>Class 10-B · Arithmetic Progressions <span style="letter-spacing:0;text-transform:none;font-family:var(--body)">click a student</span></h3>
+        <div style="overflow-x:auto"><table class="heat" id="heat"></table></div>
+        <div class="hl"><span><i style="background:#5EE6C8"></i>Secure</span><span><i style="background:#FFB547"></i>Developing</span><span><i style="background:#FF8A9B"></i>Needs help</span><span><i style="background:#26324F"></i>Not started</span></div>
+      </div>
+      <div class="side">
+        <div class="panel rv d1" id="feedPanel">
+          <h3>Live from the tutor <span style="display:flex;align-items:center;gap:6px;letter-spacing:0;text-transform:none;font-family:var(--body)"><i style="width:7px;height:7px;border-radius:50%;background:var(--chalk);display:inline-block"></i> streaming</span></h3>
+          <ul id="feed"></ul>
+        </div>
+        <div class="panel profile" id="profile"></div>
+      </div>
+      <div class="panel rules rv" style="grid-column:1/-1">
+        <h3>Tutor rules for this chapter</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px 22px">
+          <label>Hints before a full solution: <b id="hintVal" style="color:var(--chalk)">3</b>
+            <input type="range" id="hintRule" min="1" max="3" value="3">
+          </label>
+          <label>Full solutions
+            <select id="solRule">
+              <option value="attempt">After the student's own attempt</option>
+              <option value="never">Never for exercise questions</option>
+              <option value="always">Always available</option>
+            </select>
+          </label>
+          <div>
+            <label class="row">Teach in my style (my examples first) <input type="checkbox" checked></label>
+            <label class="row">Alert me when a student relies on answers <input type="checkbox" checked></label>
+          </div>
+        </div>
+        <div class="tie"><span aria-hidden="true">↑</span> These rules drive the whiteboard demo above. Set 1 hint and "Never", then try a wrong answer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles">
+  <div class="wrap">
+    <div class="eyebrow rv">Responsible by design</div>
+    <h2 class="rv d1">Built to respect<br><em>teachers and schools.</em></h2>
+    <div class="princ">
+      <div class="pc rv"><div class="num">1</div><b>Only from the textbook</b><p>Answers are built from checked curriculum items and cite them. Outside the syllabus, the tutor says so.</p></div>
+      <div class="pc rv d1"><div class="num">2</div><b>Hints before answers</b><p>It guides with questions and steps. A full solution opens only when the teacher's rules allow.</p></div>
+      <div class="pc rv d2"><div class="num">3</div><b>Checked before shown</b><p>Calculations are verified by code and every statement traced to the book; anything that fails is not shown.</p></div>
+      <div class="pc rv"><div class="num">4</div><b>The teacher is in the loop</b><p>Teachers see how each student uses the tutor and decide what it may do for that student.</p></div>
+      <div class="pc rv d1"><div class="num">5</div><b>Minimal, private data</b><p>Notes stay on the device. No more personal data than learning needs, with parental consent.</p></div>
+      <div class="pc rv d2"><div class="num">6</div><b>Learning to learn with AI</b><p>Students practise asking good questions and checking answers, a skill that outlasts the app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot">
+  <canvas id="glyphs2" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:.5"></canvas>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="eyebrow rv">Start small, prove it, grow</div>
+    <h2 class="rv d1">Give every student<br><em>a reason to love maths again.</em></h2>
+    <div class="road">
+      <div class="rd now rv"><span class="ph">Phase 1 · now</span><b>One subject, two classes</b><p>NCERT Mathematics, Class 9 and 10. The textbook knowledge graph and its evaluation are underway.</p></div>
+      <div class="rd rv d1"><span class="ph">Phase 2</span><b>Pilot schools</b><p>Notebook, tutor and teacher console in real classrooms. <span class="ph-hold">[PILOT SCHOOLS]</span></p></div>
+      <div class="rd rv d2"><span class="ph">Phase 3</span><b>More classes and subjects</b><p>The same pipeline, extended across the curriculum. <span class="ph-hold">[TIMELINE]</span></p></div>
+    </div>
+    <div class="rv d2" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn primary" href="#pilot">Partner on a pilot <span class="ph-hold" style="color:#04211b">[CONTACT]</span></a>
+      <a class="btn ghost" href="#lesson">Replay the lesson</a>
+    </div>
+    <p style="margin-top:28px;color:var(--dim);font-size:14px">The ask: <span class="ph-hold">[INVESTMENT AMOUNT · USE OF FUNDS]</span></p>
+  </div>
+</section>
+
+<footer>TEA<i style="color:var(--chalk)">i</i>CH · an AI teaching guide that keeps teachers in charge · <span class="ph-hold">[YEAR]</span></footer>
+
+<div id="toast" role="status"></div>
+<div id="presentHint">Presenting · ← → move · F fullscreen · Esc exit</div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2600); }
+
+/* ---------- progress, nav, reveal ---------- */
+const nav = $('#nav'), prog = $('#progress');
+const sections = $$('section');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  nav.classList.toggle('scrolled', h.scrollTop > 40);
+}, { passive: true });
+const navIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) $$('.navlinks a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+sections.forEach(s => navIO.observe(s));
+const rvIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); rvIO.unobserve(e.target); } }), { threshold: .12 });
+$$('.rv').forEach(el => rvIO.observe(el));
+
+/* ---------- glyph constellation ---------- */
+function constellation(canvas, density){
+  const ctx = canvas.getContext('2d');
+  const G = ['π','∑','√','Δ','θ','∫','aₙ','d','∞','≅','∥','x²','n','±','∠','≈','f(x)','%','½','√2'];
+  let W, H, P = [], mouse = { x: -999, y: -999 }, visible = true;
+  function size(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(W * H / density);
+    P = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3, g: G[Math.random() * G.length | 0], s: 12 + Math.random() * 16, a: .25 + Math.random() * .45 }));
+  }
+  size(); addEventListener('resize', size);
+  canvas.parentElement.addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  canvas.parentElement.addEventListener('pointerleave', () => { mouse.x = mouse.y = -999; });
+  new IntersectionObserver(es => visible = es[0].isIntersecting).observe(canvas);
+  function frame(){
+    requestAnimationFrame(frame);
+    if (!visible) return;
+    ctx.clearRect(0, 0, W, H);
+    for (const p of P){
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+      if (d2 < 22000){ const f = (22000 - d2) / 22000 * .6; p.vx += dx / Math.sqrt(d2 + 1) * f; p.vy += dy / Math.sqrt(d2 + 1) * f; }
+      p.vx *= .96; p.vy *= .96; p.vx += (Math.random() - .5) * .02; p.vy += (Math.random() - .5) * .02;
+      if (!reduce){ p.x += p.vx; p.y += p.vy; }
+      if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20; if (p.y < -20) p.y = H + 20; if (p.y > H + 20) p.y = -20;
+    }
+    for (let i = 0; i < P.length; i++) for (let j = i + 1; j < P.length; j++){
+      const a = P[i], b = P[j], dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy;
+      if (d < 16000){ ctx.strokeStyle = `rgba(94,230,200,${(1 - d / 16000) * .18})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+    }
+    for (const p of P){
+      const near = Math.hypot(p.x - mouse.x, p.y - mouse.y) < 160;
+      ctx.fillStyle = near ? `rgba(94,230,200,${Math.min(1, p.a + .4)})` : `rgba(200,212,235,${p.a})`;
+      ctx.font = `italic ${p.s}px Fraunces, Georgia, serif`; ctx.fillText(p.g, p.x, p.y);
+    }
+  }
+  frame();
+}
+constellation($('#glyphs'), 16000);
+constellation($('#glyphs2'), 26000);
+
+/* ---------- hero rotator, chat, tilt ---------- */
+const words = ['your teacher does.', 'you think.', 'you see it.', 'it finally clicks.'];
+let wi = 0; const rot = $('#rot');
+setInterval(() => {
+  const old = rot.firstElementChild; old.classList.add('out');
+  setTimeout(() => {
+    wi = (wi + 1) % words.length;
+    const s = document.createElement('span'); s.textContent = words[wi]; s.className = 'in';
+    rot.replaceChildren(s); requestAnimationFrame(() => requestAnimationFrame(() => s.classList.remove('in')));
+  }, 420);
+}, 2800);
+async function heroChat(){
+  const bs = $$('#heroChat .bubble');
+  while (true){
+    for (const b of bs){ await sleep(1100); b.classList.add('show'); }
+    await sleep(5000); bs.forEach(b => b.classList.remove('show')); await sleep(700);
+  }
+}
+heroChat();
+const card = $('#heroCard');
+$('#hero').addEventListener('pointermove', e => {
+  if (reduce) return;
+  const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  card.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+});
+$('#hero').addEventListener('pointerleave', () => card.style.transform = '');
+
+/* ---------- drift chart ---------- */
+const cW = $('#cW'), cT = $('#cT');
+[cW, cT].forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p._L = L; });
+function setWeek(v){
+  const t = v / 100;
+  [cW, cT].forEach(p => p.style.strokeDashoffset = p._L * (1 - t));
+  const pw = cW.getPointAtLength(cW._L * t), pt = cT.getPointAtLength(cT._L * t);
+  $('#scrubDotW').setAttribute('cx', pw.x); $('#scrubDotW').setAttribute('cy', pw.y);
+  $('#scrubDotT').setAttribute('cx', pt.x); $('#scrubDotT').setAttribute('cy', pt.y);
+  $('#scrubDotW').setAttribute('opacity', t > 0 && t < 1 ? 1 : 0); $('#scrubDotT').setAttribute('opacity', t > 0 && t < 1 ? 1 : 0);
+  $('#missMark').setAttribute('opacity', t > .28 ? 1 : 0); $('#catchMark').setAttribute('opacity', t > .4 ? 1 : 0);
+  $('#weekLbl').textContent = 'Week ' + Math.max(1, Math.round(t * 12));
+}
+setWeek(0);
+const scrub = $('#weekScrub');
+scrub.addEventListener('input', () => setWeek(+scrub.value));
+new IntersectionObserver((es, o) => {
+  if (!es[0].isIntersecting) return; o.disconnect();
+  const t0 = performance.now(), D = reduce ? 1 : 2600;
+  (function step(now){ const k = Math.min(1, (now - t0) / D); const v = (1 - Math.pow(1 - k, 3)) * 100; scrub.value = v; setWeek(v); if (k < 1) requestAnimationFrame(step); })(t0);
+}, { threshold: .4 }).observe($('.chartbox'));
+
+/* ---------- teacher rules (shared with the lesson) ---------- */
+const rules = { hints: 3, solution: 'attempt' };
+const solNames = { attempt: 'after attempt', never: 'never', always: 'always' };
+function renderRules(){
+  $('#hintVal').textContent = rules.hints;
+  $('#ruleLbl').textContent = `${rules.hints} hint${rules.hints > 1 ? 's' : ''} · ${solNames[rules.solution]}`;
+  renderMeter();
+}
+$('#hintRule').addEventListener('input', e => { rules.hints = +e.target.value; renderRules(); toast(`Tutor rule: ${rules.hints} hint${rules.hints > 1 ? 's' : ''} before a full solution`); });
+$('#solRule').addEventListener('change', e => { rules.solution = e.target.value; renderRules(); toast('Tutor rule updated for Class 10-B'); });
+
+/* ---------- live lesson ---------- */
+const board = $('#board');
+let speed = 1, runId = 0, hintsUsed = 0, totalHints = 0, started = false, shedModel = null;
+const M = o => shedModel && shedModel.set(o);
+function renderMeter(){
+  const m = $('#hintMeter'); m.innerHTML = '';
+  for (let i = 0; i < rules.hints; i++){ const b = document.createElement('i'); if (i < hintsUsed) b.className = 'used'; m.appendChild(b); }
+  $('#hintTxt').textContent = `Hints used: ${hintsUsed} of ${rules.hints}`;
+}
+const KIND = { attempt: ['#7CC4FF', 'ATTEMPT'], hint: ['#FFB547', 'HINT'], ok: ['#5EE6C8', 'SOLVED'], step: ['#A99BFF', 'STEP'], flag: ['#FF8A9B', 'FLAG'] };
+let logT0 = 0;
+function log(kind, text){
+  const ul = $('#evlog'); if (ul.firstElementChild && !ul.firstElementChild.querySelector('time')) ul.innerHTML = '';
+  const s = Math.round((performance.now() - logT0) / 1000);
+  const li = document.createElement('li');
+  const [c, k] = KIND[kind];
+  li.innerHTML = `<time>${String(s / 60 | 0).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}</time><span class="k" style="background:${c}22;color:${c}">${k}</span><span>${text}</span>`;
+  ul.prepend(li);
+}
+function line(cls, who){
+  const d = document.createElement('div'); d.className = 'hw ' + cls;
+  if (who){ const w = document.createElement('span'); w.className = 'who'; w.textContent = who; d.appendChild(w); }
+  board.appendChild(d); board.scrollTop = board.scrollHeight; return d;
+}
+async function write(html, cls = 'ai', who = '', alive){
+  if (!alive()) return;
+  const d = line(cls, who);
+  const ink = document.createElement('span'); ink.className = 'ink'; ink.innerHTML = html; d.appendChild(ink);
+  // shrink a line that would not fit the board (narrow screens)
+  const room = d.clientWidth - ink.offsetLeft - 8;
+  if (ink.scrollWidth > room) d.style.fontSize = Math.max(14, parseFloat(getComputedStyle(d).fontSize) * room / ink.scrollWidth) + 'px';
+  const w = ink.scrollWidth, len = ink.textContent.length;
+  if (reduce){ return sleep(150); }
+  const dur = Math.max(450, len * 42) / speed;
+  const pen = document.createElement('span'); pen.className = 'pen'; d.appendChild(pen);
+  const off = ink.offsetLeft;
+  ink.style.width = '0px';
+  const a1 = ink.animate([{ width: '0px' }, { width: w + 'px' }], { duration: dur, easing: 'cubic-bezier(.3,.1,.7,.9)', fill: 'forwards' });
+  pen.animate([{ left: off + 'px' }, { left: (off + w) + 'px' }], { duration: dur, easing: 'cubic-bezier(.3,.1,.7,.9)', fill: 'forwards' });
+  await a1.finished.catch(() => {});
+  pen.remove(); a1.cancel(); ink.style.width = 'auto';
+  board.scrollTop = board.scrollHeight;
+  await sleep(140 / speed);
+}
+const pause = (ms, alive) => alive() ? sleep(ms / speed) : Promise.resolve();
+const num = v => parseFloat(String(v).replace(/[−–—]/g, '-').replace(/\s/g, ''));
+
+/* An exchange where the student must answer: fields, hints, and teacher rules. */
+function ask({ fields, hints, stuckFlag }, alive){
+  return new Promise(resolve => {
+    if (!alive()) return resolve(null);
+    hintsUsed = 0; renderMeter();  // the teacher's hint budget is per question
+    const row = line('st ask-row', 'Student');
+    const inputs = fields.map(f => {
+      const wrap = document.createElement('span'); wrap.innerHTML = `${f.label} = `;
+      const inp = document.createElement('input'); inp.setAttribute('aria-label', f.aria); inp.inputMode = 'decimal'; inp.autocomplete = 'off';
+      wrap.appendChild(inp); if (f.unit) wrap.append(' ' + f.unit); row.appendChild(wrap); return inp;
+    });
+    const act = document.createElement('div'); act.className = 'ask-actions';
+    act.innerHTML = `<button type="button" class="go">Check my answer</button><button type="button" class="auto">Let the student answer</button>` + (fields.some(f => f.typical !== undefined) ? `<button type="button" class="oops">Make a typical mistake</button>` : '') + (rules.solution === 'always' ? `<button type="button" class="sol">Show me the solution</button>` : '');
+    board.appendChild(act); board.scrollTop = board.scrollHeight;
+    let attempts = 0, done = false, wrongOnce = false;
+    const finish = (how) => { if (done) return; done = true; act.remove(); row.remove(); resolve(how); };
+    inputs.forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter') check(); }));
+    const given = {};
+    async function giveHint(key, mk){
+      // a known misconception: name it for the teacher and show it on the model
+      if (mk){ log('flag', mk.flag); if (mk.model) M(mk.model); }
+      if (hintsUsed < rules.hints){
+        let h;
+        if (mk) h = mk.msg;
+        else { const list = hints[key], k = given[key] = (given[key] ?? -1) + 1; h = list[Math.min(k, list.length - 1)]; }
+        hintsUsed++; totalHints++; renderMeter();
+        log('hint', `Hint ${hintsUsed}: ${h.replace(/<[^>]+>/g, '')}`);
+        act.style.visibility = 'hidden';
+        board.insertBefore(row, null);
+        await writeBefore(`Hint ${hintsUsed}: ${h}`, 'ai', 'AI');
+        act.style.visibility = 'visible';
+      } else if (rules.solution === 'never'){
+        log('flag', stuckFlag);
+        act.style.visibility = 'hidden';
+        await writeBefore(`Your teacher wants you to crack this one. Look at the last hint again.`, 'ai', 'AI');
+        act.style.visibility = 'visible';
+      } else {
+        log('step', 'Hints used up: solution opened by teacher rule');
+        finish('solution');
+      }
+    }
+    async function writeBefore(html, cls, who){
+      // keep the input row last: write the hint above it
+      row.remove(); act.remove();
+      await write(html, cls, who, alive);
+      if (!alive()) return;
+      board.appendChild(row); board.appendChild(act); board.scrollTop = board.scrollHeight;
+      inputs[0].focus({ preventScroll: true });
+    }
+    async function check(){
+      const vals = inputs.map(i => num(i.value));
+      if (vals.some(v => Number.isNaN(v))){ toast('Write a number in each blank'); return; }
+      attempts++;
+      const eq = (a, b) => Math.abs(a - b) < 0.011;
+      const okAll = fields.every((f, k) => eq(vals[k], f.answer));
+      log('attempt', fields.map((f, k) => `${f.label} = ${inputs[k].value}`).join(', ') + (okAll ? ' ✓' : ' ✗'));
+      if (okAll) return finish('own');
+      wrongOnce = true;
+      fields.forEach((f, k) => { inputs[k].style.borderBottomColor = eq(vals[k], f.answer) ? 'var(--pen-ok)' : '#C2410C'; });
+      const k = fields.findIndex((f, j) => !eq(vals[j], f.answer)), bad = fields[k];
+      const mk = bad.mistakes && Object.entries(bad.mistakes).find(([v]) => eq(+v, vals[k]));
+      await giveHint(bad.label, mk && mk[1]);
+    }
+    const oops = act.querySelector('.oops');
+    if (oops) oops.onclick = () => { inputs.forEach((i, k) => i.value = fields[k].typical ?? fields[k].answer); check(); };
+    act.querySelector('.go').onclick = check;
+    act.querySelector('.auto').onclick = () => { log('attempt', 'Student answered on the board'); finish('auto'); };
+    const sol = act.querySelector('.sol'); if (sol) sol.onclick = () => { log('flag', 'Full solution requested before trying'); finish('solution'); };
+    setTimeout(() => inputs[0].focus({ preventScroll: true }), 50);
+  });
+}
+
+async function lessonAP(alive){
+  log('step', 'Session opened · Ch 5 · Exercise 5.1');
+  await write('In a flower bed, there are 23 rose plants', 'q', 'Question', alive);
+  await write('in the first row, 21 in the second,', 'q', '', alive);
+  await write('19 in the third, and so on. There are', 'q', '', alive);
+  await write('5 plants in the last row.', 'q', '', alive);
+  await write('How many rows are there in the flower bed?', 'q', '', alive);
+  await pause(700, alive);
+  await write('This is a classic problem of finding n in an AP.', 'ai', 'AI', alive);
+  await write('The rows form an AP: the difference between', 'ai', '', alive);
+  await write('consecutive rows stays the same.', 'ai', '', alive);
+  await write('Let\'s find a and d first. Your turn.', 'ai', '', alive);
+  log('step', 'Concept matched: nth term of an AP (Textbook 5.3)');
+  const r1 = await ask({
+    fields: [{ label: 'a', aria: 'first term a', answer: 23 }, { label: 'd', aria: 'common difference d', answer: -2 }],
+    hints: {
+      a: ['a is the <u>first</u> term: the plants in row one.', 'Look at the question: how many in the first row?'],
+      d: ['23 → 21: do the rows go up or down?', 'd = second term − first term. Find 21 − 23.', 'Going down by 2 each row means d is negative.'],
+    },
+    stuckFlag: 'Stuck on common difference after all hints',
+  }, alive);
+  if (!alive()) return;
+  if (r1 === 'solution') await write('Here it is, from the textbook method:', 'ai', 'AI', alive);
+  await write('a = 23', 'st', r1 === 'solution' ? '' : 'Student', alive);
+  await write('d = 21 − 23 = −2', 'st indent', '', alive);
+  await write('a<sub>n</sub> = 5', 'st indent', '', alive);
+  await pause(300, alive);
+  await write('Right. Let\'s apply the nth-term formula to find n.', 'ai', 'AI', alive);
+  await write('a<sub>n</sub> = a + (n − 1)d', 'ai indent', '', alive);
+  await write('Put the values in and solve for n.', 'ai', '', alive);
+  const r2 = await ask({
+    fields: [{ label: 'n', aria: 'number of rows n', answer: 10 }],
+    hints: { n: ['Substitute: 5 = 23 + (n − 1)(−2).', 'Subtract 23 from both sides, then divide by −2.', '(n − 1) = 9. What is n?'] },
+    stuckFlag: 'Stuck solving the linear equation: links to Class 9',
+  }, alive);
+  if (!alive()) return;
+  await write('5 = 23 + (n − 1)(−2)', 'st', 'Student', alive);
+  await write('−18 = (n − 1)(−2)', 'st indent', '', alive);
+  await write('9 = n − 1', 'st indent', '', alive);
+  await write('<span class="boxed">n = 10</span>', 'st indent', '', alive);
+  await pause(400, alive);
+  await write('✓ 10 rows. Checked: 23, 21, 19, …, 5 has 10 terms.', 'ok', 'AI', alive);
+  await write('Next, try Exercise 5.2 Q3, same idea.', 'ai', '', alive);
+  const own = r1 === 'own' && r2 === 'own';
+  log('ok', `Solved · ${totalHints} hint${totalHints === 1 ? '' : 's'} · ${own ? 'own answers' : 'with help'}`);
+}
+
+/* The shed: volume of a composite solid, then the teacher's surface-area follow-up. */
+async function lessonShed(alive){
+  const opened = r => r === 'solution' ? write('Here is that step, worked out:', 'ai', 'AI', alive) : null;
+  log('step', 'Session opened · Ch 12 · Example 5 (the shed)');
+  M({ focus: [], explode: false, labels: 'dims', cap: 'The shed: a cuboid with half a cylinder on top' });
+  await write('A shed is a cuboid with half a cylinder on top.', 'q', 'Question', alive);
+  await write('Base 7 m × 15 m, cuboid height 8 m.', 'q', '', alive);
+  await write('Machinery takes 300 m³ and 20 workers', 'q', '', alive);
+  await write('take about 0.08 m³ each.', 'q', '', alive);
+  await write('How much air is in the shed?', 'q', '', alive);
+  await pause(600, alive);
+  M({ explode: true, focus: ['cuboid', 'half'], labels: 'none', cap: 'Split it into shapes you know' });
+  await write('Split the shed into shapes you know:', 'ai', 'AI', alive);
+  await write('a cuboid below, half a cylinder on top.', 'ai', '', alive);
+  log('step', 'Concepts matched: volume of a cuboid, volume of a cylinder');
+  await pause(500, alive);
+  M({ explode: false, focus: ['cuboid'], labels: 'dims', cap: 'Cuboid: 15 × 7 × 8' });
+  await write('Start with the cuboid. Volume = l × b × h.', 'ai', '', alive);
+  const r1 = await ask({
+    fields: [{ label: 'V₁', aria: 'volume of the cuboid', answer: 840, unit: 'm³', typical: 105,
+      mistakes: { 105: { msg: 'That is the floor area, 15 × 7. A volume needs the height too.', flag: 'Wrote an area for a volume', model: { focus: ['floor'], cap: '15 × 7 is only the floor' } } } }],
+    hints: { 'V₁': ['Cuboid volume = length × breadth × height.', '15 × 7 × 8 = ?'] },
+    stuckFlag: 'Stuck on the cuboid volume',
+  }, alive);
+  if (!alive()) return;
+  await opened(r1);
+  await write('V₁ = 15 × 7 × 8 = 840 m³', 'st', r1 === 'solution' ? '' : 'Student', alive);
+  M({ focus: ['ends'], labels: 'radius', cap: 'The end face: a half circle 7 m across' });
+  await write('Now the roof. Look at its end: what is the radius?', 'ai', 'AI', alive);
+  const r2 = await ask({
+    fields: [{ label: 'r', aria: 'radius of the half cylinder', answer: 3.5, unit: 'm', typical: 7,
+      mistakes: { 7: { msg: 'Careful: 7 m runs edge to edge across the curve. That is the diameter.', flag: 'Misconception: diameter used as radius', model: { focus: ['ends'], labels: 'radius', cap: '7 m is the diameter; r is half of it' } } } }],
+    hints: { r: ['The 7 m runs across the whole half circle.', 'Radius is half the diameter: 7 ÷ 2.'] },
+    stuckFlag: 'Stuck on the radius',
+  }, alive);
+  if (!alive()) return;
+  await opened(r2);
+  await write('r = 7 ÷ 2 = 3.5 m, length h = 15 m', 'st', r2 === 'solution' ? '' : 'Student', alive);
+  M({ focus: ['half'], labels: 'dims', cap: 'Half a cylinder: r = 3.5 m, h = 15 m' });
+  await write('Half a cylinder holds ½ πr²h. Your turn.', 'ai', 'AI', alive);
+  const r3 = await ask({
+    fields: [{ label: 'V₂', aria: 'volume of the half cylinder', answer: 288.75, unit: 'm³', typical: 577.5,
+      mistakes: {
+        577.5: { msg: 'Your working is right, but that is the whole cylinder. The roof is only the top half.', flag: 'Forgot the ½ (used the full cylinder)', model: { focus: ['half'], ghost: true, cap: 'The roof is only half of the cylinder' } },
+        1155: { msg: 'Looks like r = 7 slipped back in. Use r = 3.5.', flag: 'Diameter used as radius again', model: { focus: ['ends'], labels: 'radius', cap: 'r = 3.5 m, not 7 m' } },
+      } }],
+    hints: { 'V₂': ['½ × 22/7 × 3.5 × 3.5 × 15', '22/7 × 3.5 × 3.5 = 38.5. Now × 15, then ÷ 2.'] },
+    stuckFlag: 'Stuck on the half-cylinder volume',
+  }, alive);
+  if (!alive()) return;
+  await opened(r3);
+  await write('V₂ = ½ × 22/7 × 3.5 × 3.5 × 15 = 288.75 m³', 'st', r3 === 'solution' ? '' : 'Student', alive);
+  M({ focus: [], explode: false, labels: 'dims', cap: 'Whole shed: 840 + 288.75' });
+  await write('V = 840 + 288.75 = 1128.75 m³', 'st indent', '', alive);
+  await write('Good. Now take out the machinery and the workers.', 'ai', 'AI', alive);
+  const r4 = await ask({
+    fields: [{ label: 'Air', aria: 'volume of air', answer: 827.15, unit: 'm³', typical: 828.67,
+      mistakes: {
+        828.67: { msg: '0.08 m³ is the space for one worker. How many workers are there?', flag: 'Missed "each" when reading the question' },
+        828.75: { msg: 'The workers take up space too: 20 of them, 0.08 m³ each.', flag: 'Left out the workers' },
+      } }],
+    hints: { Air: ['Air = shed volume − machinery − workers.', 'Workers: 20 × 0.08 = 1.6 m³.'] },
+    stuckFlag: 'Stuck on the air volume',
+  }, alive);
+  if (!alive()) return;
+  await opened(r4);
+  await write('Air = 1128.75 − (300 + 20 × 0.08)', 'st', r4 === 'solution' ? '' : 'Student', alive);
+  await write('= 1128.75 − 301.6 = <span class="boxed">827.15 m³</span>', 'st indent', '', alive);
+  await write('✓ 827.15 m³ of air. Checked by code.', 'ok', 'AI', alive);
+  await pause(600, alive);
+  log('step', 'Teacher\'s follow-up added: surface area');
+  M({ focus: ['walls', 'roof', 'ends'], labels: 'none', cap: 'Sheet metal goes on the outside only' });
+  await write('Ms. Rao added a question: how much sheet', 'ai', 'AI', alive);
+  await write('metal covers the shed? (No metal on the floor.)', 'ai', '', alive);
+  const r5 = await ask({
+    fields: [{ label: 'Area', aria: 'surface area of sheet metal', answer: 555.5, unit: 'm²', typical: 660.5,
+      mistakes: {
+        660.5: { msg: 'You added a 7 × 15 face (105 m²) with no metal on it: the floor, or the top hidden under the roof.', flag: 'Counted a hidden face in the surface area', model: { explode: true, focus: ['hidden', 'floor'], cap: 'These faces are not on the outside' } },
+        720.5: { msg: 'The roof is half a cylinder, so its curved area is πrh, not 2πrh.', flag: 'Used the full curved surface', model: { focus: ['roof'], ghost: true, cap: 'Curved roof = ½ × 2πrh = πrh' } },
+      } }],
+    hints: { Area: ['Outside only: 4 walls, the curved roof, the two half-circle ends.', 'Walls 2(15 × 8) + 2(7 × 8); roof πrh; ends πr².'] },
+    stuckFlag: 'Stuck on the surface area',
+  }, alive);
+  if (!alive()) return;
+  await opened(r5);
+  M({ explode: false, focus: ['walls'], labels: 'dims', cap: 'Walls: 2(15 × 8) + 2(7 × 8)' });
+  await write('Walls = 2(15 × 8) + 2(7 × 8) = 352 m²', 'st', r5 === 'solution' ? '' : 'Student', alive);
+  M({ focus: ['roof'], labels: 'none', cap: 'Curved roof: πrh' });
+  await write('Roof = πrh = 22/7 × 3.5 × 15 = 165 m²', 'st indent', '', alive);
+  M({ focus: ['ends'], cap: 'Two half circles make one circle: πr²' });
+  await write('Ends = πr² = 22/7 × 3.5 × 3.5 = 38.5 m²', 'st indent', '', alive);
+  M({ focus: ['walls', 'roof', 'ends'], cap: 'All the metal: 555.5 m²' });
+  await write('Total = 352 + 165 + 38.5 = <span class="boxed">555.5 m²</span>', 'st indent', '', alive);
+  await write('✓ 555.5 m². Split, measure, add. Well done.', 'ok', 'AI', alive);
+  const own = [r1, r2, r3, r4, r5].every(r => r === 'own');
+  log('ok', `Solved · ${totalHints} hint${totalHints === 1 ? '' : 's'} · ${own ? 'own answers' : 'with help'}`);
+}
+
+const LESSONS = {
+  ap: {
+    title: 'Working area · Class 10 · AP', model: false, run: lessonAP,
+    solver: 'a = 23, d = 21 − 23 = −2, aₙ = 5<br>5 = 23 + (n − 1)(−2)<br>n − 1 = 9 → n = 10<br><span class="okk">✓ code check: 23, 21, …, 5 → 10 terms</span>',
+    chips: '<span class="chip c">Textbook · Ch 5 · nth term of an AP</span><span class="chip">Class note · 14 Oct</span><span class="chip">Teacher\'s worked example</span>',
+  },
+  shed: {
+    title: 'Working area · Class 10 · Surface areas and volumes', model: true, run: lessonShed,
+    solver: 'V₁ = 15 × 7 × 8 = 840<br>r = 3.5 → V₂ = ½ · 22/7 · 3.5² · 15 = 288.75<br>V = 1128.75 m³<br>Air = 1128.75 − 300 − 1.6 = 827.15 m³<br>Metal = 352 + 165 + 38.5 = 555.5 m²<br><span class="okk">✓ code check: units and arithmetic</span>',
+    chips: '<span class="chip c">Textbook · Ch 12 · Example 5</span><span class="chip">Volume of a cylinder</span><span class="chip">Class note · 21 Oct</span><span class="chip">Teacher\'s follow-up: surface area</span>',
+  },
+};
+let curLesson = 'ap';
+async function lesson(){
+  const id = ++runId; const alive = () => id === runId;
+  board.innerHTML = ''; hintsUsed = 0; totalHints = 0; renderMeter(); logT0 = performance.now();
+  $('#evlog').innerHTML = '';
+  await LESSONS[curLesson].run(alive);
+}
+function startLesson(){ started = true; $('#boardStart')?.remove(); lesson(); }
+function selectLesson(key){
+  curLesson = key; runId++; started = true;  // a chosen lesson waits for its Start button
+  const L = LESSONS[key];
+  $$('.ltab').forEach(t => t.setAttribute('aria-selected', t.dataset.l === key));
+  $('#boardTitle').textContent = L.title; $('#solver').innerHTML = L.solver; $('#chips').innerHTML = L.chips;
+  $('#modelPanel').hidden = !L.model;
+  board.innerHTML = '<div class="board-start" id="boardStart"><button class="btn primary" type="button">Start the lesson ▸</button></div>';
+  board.querySelector('button').onclick = startLesson;
+  $('#evlog').innerHTML = '<li style="color:var(--dim)">Waiting for the lesson to start…</li>';
+  hintsUsed = 0; renderMeter();
+  if (L.model) M({ focus: [], explode: false, labels: 'dims', ghost: false, cap: 'The shed: drag to turn it' });
+}
+$$('.ltab').forEach(t => t.onclick = () => selectLesson(t.dataset.l));
+$('#startBtn').onclick = startLesson;
+$('#restartBtn').onclick = startLesson;
+$('#speedBtn').onclick = e => { speed = speed === 1 ? 2 : 1; e.currentTarget.setAttribute('aria-pressed', speed === 2); };
+$('#peek').onchange = e => $('#solver').classList.toggle('peek', e.target.checked);
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !started){ o.disconnect(); setTimeout(() => !started && startLesson(), 600); } }, { threshold: .45 }).observe(board);
+renderRules();
+
+/* ---------- the shed in 3D: a small painter's-algorithm renderer ---------- */
+function ShedModel(canvas, capEl){
+  const ctx = canvas.getContext('2d'), R = 3.5;
+  const F = [], q = (pts, g, part) => F.push({ pts, g, part });
+  q([[0,0,0],[15,0,0],[15,0,7],[0,0,7]], 'floor', 'cuboid');
+  q([[0,8,0],[15,8,0],[15,8,7],[0,8,7]], 'hidden', 'cuboid');
+  q([[0,0,0],[15,0,0],[15,8,0],[0,8,0]], 'walls', 'cuboid');
+  q([[0,0,7],[15,0,7],[15,8,7],[0,8,7]], 'walls', 'cuboid');
+  q([[0,0,0],[0,0,7],[0,8,7],[0,8,0]], 'walls', 'cuboid');
+  q([[15,0,0],[15,0,7],[15,8,7],[15,8,0]], 'walls', 'cuboid');
+  const N = 20, arc = (x, a0 = 0, a1 = Math.PI) => Array.from({ length: N + 1 }, (_, i) => { const t = a0 + (a1 - a0) * i / N; return [x, 8 + R * Math.sin(t), 3.5 + R * Math.cos(t)]; });
+  const A0 = arc(0), A1 = arc(15);
+  for (let i = 0; i < N; i++) q([A0[i], A1[i], A1[i + 1], A0[i + 1]], 'roof', 'half');
+  q(A0, 'ends', 'half'); q(A1, 'ends', 'half');
+  q([[0,8,0],[15,8,0],[15,8,7],[0,8,7]], 'hidden', 'half');
+  const COL = { cuboid: [124,196,255], half: [94,230,200], focus: [255,181,71], bad: [255,138,155] };
+  const S = { yaw: -.65, pitch: .42, ex: 0, exT: 0, focus: [], labels: 'dims', ghost: false, drag: null, vis: false, idle: 0 };
+  let W = 0, H = 0;
+  const hatch = (() => { const c = document.createElement('canvas'); c.width = c.height = 8; const x = c.getContext('2d'); x.strokeStyle = 'rgba(255,138,155,.9)'; x.lineWidth = 2; x.beginPath(); x.moveTo(0, 8); x.lineTo(8, 0); x.stroke(); return ctx.createPattern(c, 'repeat'); })();
+  function size(){ const dpr = Math.min(devicePixelRatio || 1, 2); W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function P([x, y, z], part){
+    if (part === 'half') y += S.ex * 4;
+    x -= 7.5; y -= 6 + S.ex * 2; z -= 3.5;
+    const cy = Math.cos(S.yaw), sy = Math.sin(S.yaw), cp = Math.cos(S.pitch), sp = Math.sin(S.pitch);
+    const x1 = x * cy - z * sy, z1 = x * sy + z * cy;
+    const y1 = y * cp + z1 * sp, z2 = -y * sp + z1 * cp;
+    const k = Math.min(W / 24, H / 18) * 40 / (40 + z2);
+    return [W / 2 + x1 * k, H / 2 - y1 * k, z2];
+  }
+  const L = [-.35, .8, -.5], LN = Math.hypot(...L);
+  function face(f){
+    const explicit = S.focus.includes(f.g), byPart = S.focus.includes(f.part);
+    if ((f.g === 'floor' || f.g === 'hidden') && !explicit && !(f.g === 'hidden' && S.ex > .3)) return null;
+    const pts = f.pts.map(p => P(p, f.part));
+    const z = pts.reduce((s, p) => s + p[2], 0) / pts.length;
+    return { f, pts, z, explicit, on: !S.focus.length || explicit || byPart };
+  }
+  function label(p, part, text, color){
+    let [x, y] = P(p, part);
+    ctx.font = '600 13px Inter, sans-serif'; ctx.textAlign = 'center';
+    const half = ctx.measureText(text).width / 2 + 4;
+    x = Math.max(half, Math.min(W - half, x)); y = Math.max(14, Math.min(H - 6, y));
+    ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(10,15,28,.85)'; ctx.strokeText(text, x, y); ctx.fillStyle = color; ctx.fillText(text, x, y);
+  }
+  function seg(a, b, part, color, w, dash){
+    const p = P(a, part), r = P(b, part);
+    ctx.setLineDash(dash || []); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(r[0], r[1]); ctx.stroke(); ctx.setLineDash([]);
+  }
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const list = F.map(face).filter(Boolean).sort((a, b) => b.z - a.z);
+    for (const { f, pts, explicit, on } of list){
+      const v1 = [pts[1][0] - pts[0][0], pts[1][1] - pts[0][1], pts[1][2] - pts[0][2]], v2 = [pts[2][0] - pts[0][0], pts[2][1] - pts[0][1], pts[2][2] - pts[0][2]];
+      const n = [v1[1] * v2[2] - v1[2] * v2[1], v1[2] * v2[0] - v1[0] * v2[2], v1[0] * v2[1] - v1[1] * v2[0]], nn = Math.hypot(...n) || 1;
+      const b = .55 + .45 * Math.abs((n[0] * L[0] - n[1] * L[1] + n[2] * L[2]) / nn / LN);
+      const bad = explicit && (f.g === 'hidden' || f.g === 'floor');
+      const c = bad ? COL.bad : explicit ? COL.focus : COL[f.part];
+      ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+      ctx.fillStyle = `rgba(${c.map(v => Math.round(v * b)).join(',')},${on ? .92 : .1})`; ctx.fill();
+      if (bad){ ctx.fillStyle = hatch; ctx.fill(); }
+      ctx.strokeStyle = `rgba(255,255,255,${f.g === 'roof' ? (on ? .07 : .03) : (on ? .5 : .15)})`; ctx.lineWidth = 1; ctx.stroke();
+    }
+    if (S.ghost){
+      const lo = x => arc(x, Math.PI, 2 * Math.PI);
+      [0, 15].forEach(x => { const a = lo(x); for (let i = 0; i < N; i++) seg(a[i], a[i + 1], 'half', 'rgba(255,138,155,.9)', 1.5, [4, 4]); });
+      seg([0, 8 - R, 3.5], [15, 8 - R, 3.5], 'half', 'rgba(255,138,155,.9)', 1.5, [4, 4]);
+      label([7.5, 8 - R - 1, 3.5], 'half', 'not part of the roof', '#FF8A9B');
+    }
+    if (S.labels === 'dims'){
+      label([7.5, -1.2, 0], 'cuboid', '15 m', '#ECEFF7'); label([15.6, -1.2, 3.5], 'cuboid', '7 m', '#ECEFF7'); label([15.8, 4, 0], 'cuboid', '8 m', '#ECEFF7');
+    } else if (S.labels === 'radius'){
+      const x = P([0, 8, 3.5], 'half')[2] < P([15, 8, 3.5], 'half')[2] ? 0 : 15;
+      seg([x, 8, 0], [x, 8, 7], 'half', '#FF8A9B', 2.5, [6, 4]);
+      seg([x, 8, 3.5], [x, 8 + R * Math.sin(1.05), 3.5 + R * Math.cos(1.05)], 'half', '#FFB547', 3.5);
+      label([x, 7, 3.5], 'half', '7 m = diameter', '#FF8A9B');
+      label([x, 8 + R * .5, 3.5 + R * .95], 'half', 'r = 3.5 m', '#FFB547');
+    }
+  }
+  function frame(){
+    requestAnimationFrame(frame);
+    if (!S.vis || canvas.offsetParent === null) return;
+    if (canvas.clientWidth !== W || canvas.clientHeight !== H) size();
+    S.ex += (S.exT - S.ex) * .08;
+    if (!S.drag && !reduce && performance.now() - S.idle > 1500) S.yaw += .003;
+    draw();
+  }
+  canvas.addEventListener('pointerdown', e => { S.drag = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId); canvas.classList.add('drag'); });
+  canvas.addEventListener('pointermove', e => {
+    if (!S.drag) return;
+    S.yaw += (e.clientX - S.drag.x) * .01; S.pitch = Math.max(.05, Math.min(1.2, S.pitch + (e.clientY - S.drag.y) * .008));
+    S.drag = { x: e.clientX, y: e.clientY };
+  });
+  canvas.addEventListener('pointerup', () => { S.drag = null; S.idle = performance.now(); canvas.classList.remove('drag'); });
+  new IntersectionObserver(es => S.vis = es[0].isIntersecting).observe(canvas);
+  frame();
+  return {
+    set(o){
+      if (o.focus) S.focus = o.focus;
+      if (o.explode !== undefined) S.exT = o.explode ? 1 : 0;
+      if (o.labels) S.labels = o.labels;
+      S.ghost = !!o.ghost;
+      if (o.cap !== undefined) capEl.textContent = o.cap;
+      $('#explodeBtn').textContent = S.exT ? 'Put together' : 'Take apart';
+    },
+    toggleExplode(){ this.set({ explode: !S.exT }); },
+  };
+}
+shedModel = ShedModel($('#shed3d'), $('#shedCap'));
+$('#explodeBtn').onclick = () => shedModel.toggleExplode();
+selectLesson('ap'); started = false;
+
+/* ---------- mistakes: student, AI, teacher ---------- */
+const workers = (() => { let s = ''; for (let i = 0; i < 20; i++){ const x = 22 + (i % 10) * 24, y = 26 + (i / 10 | 0) * 44; s += `<circle cx="${x}" cy="${y}" r="5" fill="#7CC4FF"/><rect x="${x - 6}" y="${y + 7}" width="12" height="16" rx="5" fill="#7CC4FF"/>`; } return s; })();
+const VIS = {
+  radius: `<svg viewBox="0 0 280 165" role="img" aria-label="Half circle: the 7 metre width is the diameter, the radius is 3.5 metres"><path d="M40,125 A100,100 0 0,1 240,125 Z" fill="rgba(94,230,200,.14)" stroke="#5EE6C8" stroke-width="2"/><line x1="40" y1="140" x2="240" y2="140" stroke="#FF8A9B" stroke-width="2"/><line x1="40" y1="133" x2="40" y2="147" stroke="#FF8A9B" stroke-width="2"/><line x1="240" y1="133" x2="240" y2="147" stroke="#FF8A9B" stroke-width="2"/><text x="140" y="161" text-anchor="middle" fill="#FF8A9B" font-family="Caveat" font-size="19">7 m = diameter</text><line x1="140" y1="125" x2="210.7" y2="54.3" stroke="#FFB547" stroke-width="3"/><circle cx="140" cy="125" r="4" fill="#FFB547"/><text x="186" y="108" fill="#FFB547" font-family="Caveat" font-size="23">r = 3.5 m</text></svg>`,
+  half: `<svg viewBox="0 0 280 170" role="img" aria-label="A circle cut in half: only the top half is the roof"><path d="M80,85 A60,60 0 0,1 200,85 Z" fill="rgba(94,230,200,.25)" stroke="#5EE6C8" stroke-width="2"/><path d="M80,85 A60,60 0 0,0 200,85" fill="none" stroke="#FF8A9B" stroke-width="2" stroke-dasharray="6 6"/><text x="140" y="70" text-anchor="middle" fill="#5EE6C8" font-family="Caveat" font-size="22">the roof: ½</text><text x="140" y="118" text-anchor="middle" fill="#FF8A9B" font-family="Caveat" font-size="18">not part of the shed</text><text x="140" y="166" text-anchor="middle" fill="#ECEFF7" font-family="Caveat" font-size="21">577.5 ÷ 2 = ?</text></svg>`,
+  workers: `<svg viewBox="0 0 260 130" role="img" aria-label="Twenty workers, each needing 0.08 cubic metres">${workers}<text x="130" y="124" text-anchor="middle" fill="#FFB547" font-family="Caveat" font-size="22">20 workers × 0.08 m³ each = ?</text></svg>`,
+  hidden: `<svg viewBox="0 0 280 190" role="img" aria-label="The shed taken apart: the top of the cuboid, under the roof, gets no metal"><defs><pattern id="hx" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#FF8A9B" stroke-width="2.5"/></pattern></defs><path d="M60,70 A60,60 0 0,1 180,70 Z" fill="rgba(94,230,200,.22)" stroke="#5EE6C8" stroke-width="2"/><path d="M60,104 L180,104 L215,88 L95,88 Z" fill="url(#hx)" stroke="#FF8A9B" stroke-width="2"/><rect x="60" y="104" width="120" height="66" fill="rgba(124,196,255,.2)" stroke="#7CC4FF" stroke-width="2"/><path d="M180,104 L215,88 L215,154 L180,170 Z" fill="rgba(124,196,255,.12)" stroke="#7CC4FF" stroke-width="2"/><text x="222" y="82" fill="#FF8A9B" font-family="Caveat" font-size="19">hidden:</text><text x="222" y="100" fill="#FF8A9B" font-family="Caveat" font-size="19">no metal</text><text x="120" y="186" text-anchor="middle" fill="#ECEFF7" font-family="Caveat" font-size="19">660.5 − 105 = ?</text></svg>`,
+};
+const MISTAKES = [
+  { tab: 'Diameter as radius', who: 'Kabir', step: 'Volume of the roof', vis: 'radius',
+    student: ['r = <span class="slip">7 m</span>', 'V₂ = ½ × 22/7 × <span class="slip">7 × 7</span> × 15', '= <span class="slip">1155 m³</span>'],
+    diag: 'Diameter used as radius',
+    ai: ['Your formula is exactly right: ½ πr²h. One number slipped.', 'The 7 m runs edge to edge across the curve, so it is the diameter. Mark the radius on the end face, then try again.'],
+    then: 'No answer given. Kabir works it out again with r = 3.5 and gets 288.75 m³ himself.',
+    model: { focus: ['ends'], labels: 'radius', cap: '7 m is the diameter; r is half of it' },
+    count: 6, pattern: 'used the diameter as the radius this week',
+    actions: [
+      ['Add my tip to the tutor', 'From now on the tutor asks every student to mark r on the end face before calculating.', 'Mark r first!'],
+      ['Assign 3 practice questions', 'Three radius-or-diameter questions added to these 6 students\' learning paths.', 'Try 3 more of these'],
+      ['Recap it in tomorrow\'s class', 'Added to tomorrow\'s lesson plan: a 2-minute recap with the 3D shed.', 'We\'ll go over this tomorrow'],
+    ] },
+  { tab: 'Full cylinder, not half', who: 'Riya', step: 'Volume of the roof', vis: 'half',
+    student: ['V₂ = <span class="slip">22/7 × 3.5 × 3.5 × 15</span>', '= <span class="slip">577.5 m³</span>'],
+    diag: 'Forgot the ½',
+    ai: ['Good working, and the arithmetic is right.', 'But the roof is only the top half of a cylinder. What do you do to the full cylinder\'s volume?'],
+    then: 'Riya halves it herself: 288.75 m³.',
+    model: { focus: ['half'], ghost: true, cap: 'The roof is only half of the cylinder' },
+    count: 4, pattern: 'used the full cylinder for the roof',
+    actions: [
+      ['Teach it my way', 'The tutor will use your class demo: a pipe cut along its length into two halves.', 'Remember the split pipe'],
+      ['Assign composite-solid practice', 'A set of composite-solid questions added for these 4 students.', 'Practice set added'],
+    ] },
+  { tab: 'Missed "each"', who: 'Rohan', step: 'Air in the shed', vis: 'workers',
+    student: ['Air = 1128.75 − 300 − <span class="slip">0.08</span>', '= <span class="slip">828.67 m³</span>'],
+    diag: 'Read past the word "each"',
+    ai: ['Shed volume and machinery: both right.', '0.08 m³ is the space for one worker. How many workers are there? Read the question once more.'],
+    then: 'Rohan finds 20 × 0.08 = 1.6 and gets 827.15 m³.',
+    model: { focus: [], labels: 'dims', cap: 'Air = 1128.75 − 300 − 20 × 0.08' },
+    count: 3, pattern: 'missed a quantity while reading the question',
+    actions: [
+      ['Turn on "list the givens"', 'For these 3 students the tutor asks them to list every given before they start solving.', 'List the givens first'],
+      ['Praise the method', 'The tutor tells Rohan his method was right and only the reading slipped.', 'Great method, read carefully'],
+    ] },
+  { tab: 'Counted a hidden face', who: 'Aarav', step: 'Sheet metal (surface area)', vis: 'hidden',
+    student: ['Walls 352 + roof 165 + ends 38.5', '+ <span class="slip">top 7 × 15 = 105</span>', '= <span class="slip">660.5 m²</span>'],
+    diag: 'Counted a face that isn\'t outside',
+    ai: ['Walls, roof and ends: all correct.', 'The 7 × 15 top of the cuboid is hidden under the roof, so no metal goes there. Look at the shed taken apart.'],
+    then: 'Aarav takes it out: 555.5 m².',
+    model: { explode: true, focus: ['hidden'], labels: 'none', cap: 'The hidden face: no metal here' },
+    count: 9, pattern: 'added a hidden face to the surface area',
+    actions: [
+      ['Start TSA questions with the 3D model', 'The tutor opens surface-area questions with the shed taken apart.', 'Use the model!'],
+      ['Recap it in tomorrow\'s class', 'Added to tomorrow\'s plan: which faces are really on the outside?', 'Let\'s discuss tomorrow'],
+    ] },
+];
+$('#mlist').innerHTML = MISTAKES.map((m, i) => `<button class="mbtn" role="tab" type="button" aria-selected="${!i}" data-i="${i}"><small>${m.who} · ${m.step}</small>${m.tab}</button>`).join('');
+function showMistake(i){
+  const m = MISTAKES[i];
+  $$('.mbtn').forEach(b => b.setAttribute('aria-selected', +b.dataset.i === i));
+  $('#mStudent').innerHTML = `<div class="mmeta">${m.who} · ${m.step}</div>` + m.student.map((l, k) => `<div class="hwl" style="animation-delay:${k * .5}s">${l}</div>`).join('') + '<div class="redpen" id="redpen"></div>';
+  $('#mAI').innerHTML = `<div class="ai-diag">${m.diag}</div>` + m.ai.map((t, k) => `<div class="ai-say" style="animation-delay:${.6 + k * .5}s">${t}</div>`).join('') +
+    `<div class="mvis">${VIS[m.vis]}</div><div class="mthen">${m.then}</div><button class="btn ghost small" type="button" id="see3d">See it on the 3D shed</button><div id="guided"></div>`;
+  $('#mTeacher').innerHTML = `<div class="tstat">${m.count}<span> of 32</span></div><p>students ${m.pattern}.</p><span class="sample">Sample data</span><div class="tact">${m.actions.map((a, k) => `<button type="button" data-k="${k}">${a[0]}</button>`).join('')}</div>`;
+  $$('#mTeacher .tact button').forEach(b => b.onclick = () => {
+    const a = m.actions[+b.dataset.k];
+    b.classList.add('done');
+    $('#guided').innerHTML = `<div class="guided"><b>Teacher's guidance → tutor</b>${a[1]}</div>`;
+    $('#redpen').textContent = `${a[2]} · Ms. R`;
+    toast(`Sent to the tutor for ${m.who}${m.count > 1 ? ` and ${m.count - 1} others` : ''}`);
+  });
+  $('#see3d').onclick = () => {
+    selectLesson('shed'); M(m.model);
+    $('#modelPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+}
+$$('.mbtn').forEach(b => b.onclick = () => showMistake(+b.dataset.i));
+showMistake(0);
+
+/* ---------- four ways in ---------- */
+const svgNS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+let mTimers = [];
+function clearM(){ mTimers.forEach(clearTimeout); mTimers = []; }
+const later = (fn, ms) => mTimers.push(setTimeout(fn, reduce ? 0 : ms));
+function drawBed(){
+  const s = $('#bedSvg'); s.innerHTML = '';
+  for (let r = 0; r < 10; r++){
+    const n = 23 - 2 * r, y = 26 + r * 34, step = 20, x0 = 320 - (n - 1) * step / 2;
+    later(() => {
+      el('text', { x: 18, y: y + 5, fill: '#7D89A3', 'font-family': 'JetBrains Mono', 'font-size': 12 }, s).textContent = 'row ' + (r + 1);
+      for (let i = 0; i < n; i++){
+        const g = el('g', { transform: `translate(${x0 + i * step},${y})`, opacity: 0 }, s);
+        el('circle', { r: 6.5, fill: r === 9 ? '#5EE6C8' : '#FF8A9B' }, g);
+        el('circle', { r: 2.6, fill: r === 9 ? '#04211b' : '#7a1f2e' }, g);
+        g.animate([{ opacity: 0, transform: `translate(${x0 + i * step}px,${y - 10}px) scale(.3)` }, { opacity: 1, transform: `translate(${x0 + i * step}px,${y}px) scale(1)` }], { duration: 380, delay: i * 14, fill: 'forwards', easing: 'cubic-bezier(.3,1.5,.6,1)' });
+      }
+      el('text', { x: 622, y: y + 5, 'text-anchor': 'end', fill: r === 9 ? '#5EE6C8' : '#ECEFF7', 'font-family': 'Caveat', 'font-size': 22 }, s).textContent = n + (r ? '' : ' plants');
+    }, r * 420);
+  }
+  later(() => { const t = el('text', { x: 320, y: 372, 'text-anchor': 'middle', fill: '#FFB547', 'font-family': 'Caveat', 'font-size': 26 }, s); t.textContent = 'each row: 2 fewer · the 10th row has 5 → 10 rows'; }, 4400);
+}
+function drawLine(){
+  const s = $('#lineSvg'); s.innerHTML = '';
+  const X = v => 40 + (25 - v) * 22.4, y = 200;
+  el('line', { x1: 30, y1: y, x2: 610, y2: y, stroke: '#A3AEC6', 'stroke-width': 2 }, s);
+  for (let v = 25; v >= 0; v--){
+    el('line', { x1: X(v), y1: y - 6, x2: X(v), y2: y + 6, stroke: '#7D89A3' }, s);
+    if (v % 2 === 1 || v === 0) el('text', { x: X(v), y: y + 26, 'text-anchor': 'middle', fill: v === 23 || v === 5 ? '#ECEFF7' : '#7D89A3', 'font-family': 'JetBrains Mono', 'font-size': 12 }, s).textContent = v;
+  }
+  el('circle', { cx: X(23), cy: y, r: 8, fill: '#FF8A9B' }, s);
+  for (let k = 0; k < 9; k++){
+    const a = 23 - 2 * k, b = a - 2;
+    later(() => {
+      const p = el('path', { d: `M${X(a)},${y - 10} Q${(X(a) + X(b)) / 2},${y - 70} ${X(b)},${y - 10}`, fill: 'none', stroke: '#5EE6C8', 'stroke-width': 2.5 }, s);
+      const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 380, fill: 'forwards' });
+      el('text', { x: (X(a) + X(b)) / 2, y: y - 50, 'text-anchor': 'middle', fill: '#FFB547', 'font-family': 'Caveat', 'font-size': 18 }, s).textContent = '−2';
+      el('circle', { cx: X(b), cy: y, r: 6, fill: b === 5 ? '#5EE6C8' : '#FF8A9B' }, s);
+      el('text', { x: (X(a) + X(b)) / 2, y: y - 76, 'text-anchor': 'middle', fill: '#A3AEC6', 'font-family': 'JetBrains Mono', 'font-size': 10 }, s).textContent = k + 1;
+    }, 300 + k * 420);
+  }
+  later(() => {
+    el('text', { x: 320, y: 270, 'text-anchor': 'middle', fill: '#ECEFF7', 'font-family': 'Caveat', 'font-size': 28 }, s).textContent = '9 jumps of −2 from 23 to 5 → 9 + 1 = 10 rows';
+  }, 300 + 9 * 420 + 200);
+}
+function animList(sel){ $$(sel).forEach(p => p.classList.remove('on')); $$(sel).forEach((p, i) => later(() => p.classList.add('on'), 250 + i * 900)); }
+const panes = { see: drawBed, pattern: drawLine, story: () => animList('#p-story p'), alg: () => animList('#p-alg div') };
+const order = ['see', 'pattern', 'story', 'alg'];
+let mCycle, mIndex = 0, mVisible = false, mUser = false;
+function showM(key){
+  clearM();
+  $$('.mtab').forEach(t => t.setAttribute('aria-selected', t.dataset.p === key));
+  $$('.mpane').forEach(p => p.classList.toggle('on', p.id === 'p-' + key));
+  mIndex = order.indexOf(key); panes[key]();
+}
+$$('.mtab').forEach(t => t.onclick = () => { mUser = true; clearInterval(mCycle); showM(t.dataset.p); });
+new IntersectionObserver(es => {
+  mVisible = es[0].isIntersecting;
+  clearInterval(mCycle);
+  if (mVisible && !mUser){ showM(order[mIndex]); mCycle = setInterval(() => showM(order[(mIndex + 1) % 4]), 7000); }
+}, { threshold: .35 }).observe($('.mstage'));
+
+/* ---------- knowledge graph ---------- */
+const TYPES = {
+  definition: ['#5EE6C8', 'Definition'], formula: ['#FFB547', 'Formula'], derivation: ['#FFD58A', 'Derivation'],
+  property: ['#A99BFF', 'Property'], graph: ['#7CC4FF', 'Graph'], example: ['#FF8A9B', 'Worked example'],
+  exercise: ['#FFB8C4', 'Exercise'], prereq: ['#9AA6BF', 'Earlier class'], later: ['#C9BFFF', 'Later class'],
+  cross: ['#8FE3A0', 'Other subject'], note: ['#FFFFFF', 'Student note'],
+};
+const NODES = [
+  ['seq', 'Sequence', 'definition', 'A list of numbers written in a definite order.'],
+  ['ap', 'Arithmetic Progression', 'definition', 'Each term after the first comes from adding the same fixed number.'],
+  ['d', 'Common difference d', 'definition', 'The fixed number added each time. Positive, negative or zero.'],
+  ['der', 'Deriving aₙ', 'derivation', 'a, a + d, a + 2d, … so the nth term adds d (n − 1) times.'],
+  ['an', 'aₙ = a + (n − 1)d', 'formula', 'Any term of an AP, without listing the ones before it.'],
+  ['sn', 'Sₙ = n/2 [2a + (n − 1)d]', 'formula', 'The sum of the first n terms.'],
+  ['prop', '2b = a + c', 'property', 'Three numbers a, b, c are in AP exactly when b is the average of a and c.'],
+  ['gr', 'aₙ against n is a line', 'graph', 'Equal steps give points on a straight line whose slope is d.'],
+  ['ex', 'Flower bed rows', 'example', 'The worked example from the whiteboard: find the number of rows.'],
+  ['exr', 'Exercise 5.2', 'exercise', 'Practice questions the tutor offers once the example is understood.'],
+  ['lin', 'Class 9 · Linear equations', 'prereq', 'Solving 5 = 23 + (n − 1)(−2) needs this. Stuck students are sent back here.'],
+  ['pat', 'Number patterns', 'prereq', 'Spotting a rule in a list of numbers.'],
+  ['ser', 'Class 11 · Sequences & series', 'later', 'Where APs lead next, alongside geometric progressions.'],
+  ['phy', 'Physics · uniform acceleration', 'cross', 'Speeds measured every second under constant acceleration form an AP.'],
+  ['note', 'My note · 14 Oct', 'note', 'The student\'s handwritten class note, linked to the concept it covers.'],
+];
+const EDGES = [['seq','ap'],['pat','seq'],['ap','d'],['d','der'],['der','an'],['an','sn'],['ap','prop'],['an','gr'],['an','ex'],['ex','exr'],['lin','ex'],['lin','an'],['sn','ser'],['ap','ser'],['gr','phy'],['d','phy'],['note','an'],['note','ex']];
+const kg = $('#kg'), kctx = kg.getContext('2d'), tip = $('#kgtip');
+$('#kgLegend').innerHTML = Object.values(TYPES).map(([c, n]) => `<span><i style="background:${c}"></i>${n}</span>`).join('');
+let KW, KH, nodes, hover = null, dragN = null, kgVisible = false;
+const nbr = {}; EDGES.forEach(([a, b]) => { (nbr[a] ||= new Set()).add(b); (nbr[b] ||= new Set()).add(a); });
+function kgSize(){
+  const dpr = Math.min(devicePixelRatio || 1, 2); KW = kg.clientWidth; KH = kg.clientHeight;
+  kg.width = KW * dpr; kg.height = KH * dpr; kctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (!nodes) nodes = NODES.map(([id, label, type, info], i) => ({ id, label, type, info, x: KW / 2 + Math.cos(i / NODES.length * 6.28) * KW * .3, y: KH / 2 + 30 + Math.sin(i / NODES.length * 6.28) * KH * .3, vx: 0, vy: 0, r: id === 'an' || id === 'ap' ? 15 : 10 }));
+}
+kgSize(); addEventListener('resize', kgSize);
+const byId = id => nodes.find(n => n.id === id);
+let tick = 0;
+function kgFrame(){
+  requestAnimationFrame(kgFrame);
+  if (!kgVisible) return;
+  tick++;
+  const narrow = KW < 640, L = narrow ? 90 : 150;
+  for (const a of nodes){
+    for (const b of nodes){ if (a === b) continue; const dx = a.x - b.x, dy = (a.y - b.y) * 1.6, d2 = dx * dx + dy * dy + .01; const f = (narrow ? 2600 : 7000) / d2; a.vx += dx * f / Math.sqrt(d2); a.vy += dy * f / Math.sqrt(d2); }
+    a.vx += (KW / 2 - a.x) * .0015; a.vy += (KH / 2 + 20 - a.y) * .003;
+  }
+  for (const [ia, ib] of EDGES){ const a = byId(ia), b = byId(ib), dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1, f = (d - L) * .012; a.vx += dx / d * f; a.vy += dy / d * f; b.vx -= dx / d * f; b.vy -= dy / d * f; }
+  for (const n of nodes){ if (n === dragN) continue; n.vx *= .82; n.vy *= .82; n.x += n.vx; n.y += n.vy; n.x = Math.max(30, Math.min(KW - 30, n.x)); n.y = Math.max(70, Math.min(KH - 24, n.y)); }
+  kctx.clearRect(0, 0, KW, KH);
+  const focus = hover || dragN;
+  for (const [ia, ib] of EDGES){
+    const a = byId(ia), b = byId(ib), on = focus && (focus === a || focus === b);
+    kctx.strokeStyle = on ? 'rgba(94,230,200,.85)' : focus ? 'rgba(255,255,255,.05)' : 'rgba(255,255,255,.16)';
+    kctx.lineWidth = on ? 2 : 1.2; kctx.beginPath(); kctx.moveTo(a.x, a.y); kctx.lineTo(b.x, b.y); kctx.stroke();
+    // a pulse travelling along each edge, "prerequisite flows to concept"
+    const t = ((tick * .006) + (ia.length * .13)) % 1;
+    kctx.fillStyle = on ? '#5EE6C8' : 'rgba(255,255,255,.35)';
+    kctx.beginPath(); kctx.arc(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, on ? 2.6 : 1.6, 0, 6.28); kctx.fill();
+  }
+  for (const n of nodes){
+    const col = TYPES[n.type][0], dim = focus && focus !== n && !(nbr[focus.id] && nbr[focus.id].has(n.id));
+    kctx.globalAlpha = dim ? .25 : 1;
+    const g = kctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 2.6);
+    g.addColorStop(0, col + '55'); g.addColorStop(1, col + '00');
+    kctx.fillStyle = g; kctx.beginPath(); kctx.arc(n.x, n.y, n.r * 2.6, 0, 6.28); kctx.fill();
+    kctx.fillStyle = col; kctx.beginPath(); kctx.arc(n.x, n.y, n === focus ? n.r + 3 : n.r, 0, 6.28); kctx.fill();
+    if (!narrow || n === focus || n.r > 10){
+      kctx.font = `${n.r > 10 ? 600 : 500} ${narrow ? 11 : 13}px Inter, sans-serif`; kctx.fillStyle = '#ECEFF7'; kctx.textAlign = 'center';
+      kctx.fillText(n.label, n.x, n.y + n.r + 16);
+    }
+    kctx.globalAlpha = 1;
+  }
+}
+kgFrame();
+new IntersectionObserver(es => kgVisible = es[0].isIntersecting).observe(kg);
+function pick(e){ const r = kg.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; let best = null, bd = 900; for (const n of nodes){ const d = (n.x - x) ** 2 + (n.y - y) ** 2; if (d < bd){ bd = d; best = n; } } return { n: best, x, y }; }
+kg.addEventListener('pointermove', e => {
+  const { n, x, y } = pick(e);
+  if (dragN){ dragN.x = x; dragN.y = y; dragN.vx = dragN.vy = 0; }
+  hover = dragN || n;
+  if (hover){
+    const [c, tn] = TYPES[hover.type];
+    tip.innerHTML = `<span class="ty" style="color:${c}">${tn}</span><b>${hover.label}</b>${hover.info}`;
+    tip.style.opacity = 1;
+    const tx = Math.min(x + 16, KW - 270), ty = Math.max(8, y - 90);
+    tip.style.left = tx + 'px'; tip.style.top = ty + 'px';
+  } else tip.style.opacity = 0;
+});
+kg.addEventListener('pointerdown', e => { const { n } = pick(e); if (n){ dragN = n; kg.setPointerCapture(e.pointerId); kg.classList.add('drag'); } });
+kg.addEventListener('pointerup', () => { dragN = null; kg.classList.remove('drag'); });
+kg.addEventListener('pointerleave', () => { if (!dragN){ hover = null; tip.style.opacity = 0; } });
+
+/* ---------- loop ---------- */
+const LOOP = [
+  { step: 'Step 1 · Student, tablet + stylus', h: 'Notebook', p: 'Students keep writing their class notes by hand, the habit that builds memory. Notes stay on the device, organised by chapter.', li: ['Each note links to the textbook concept it covers', 'Diagrams, graphs and formulas captured as written', 'The tutor learns how this class was taught'] },
+  { step: 'Step 2 · Student, any time', h: 'AI tutor', p: 'Understands the question, finds the concept in the curriculum, solves it in the background, then teaches it on the whiteboard the way the teacher did.', li: ['Hints and questions back, never the answer first', 'Explanations in the style that works for this student', 'Every step cited to the textbook and checked by code'] },
+  { step: 'Step 3 · Teacher', h: 'Teacher console', p: 'Teachers review the interactions and guide the AI for every student: what it may do, and which concepts come next.', li: ['Understanding, concept by concept, for each student', 'Alerts when a student is stuck or relies on answers', 'Rules and learning paths, per class or per student'] },
+];
+let loopI = 0, loopUser = false;
+function showLoop(i){
+  loopI = i; const d = LOOP[i];
+  $$('.lnode').forEach(n => n.classList.toggle('on', +n.dataset.i === i));
+  $('#loopDetail').innerHTML = `<div class="step">${d.step}</div><h3>${d.h}</h3><p>${d.p}</p><ul>${d.li.map(x => `<li>${x}</li>`).join('')}</ul>`;
+  $('#loopDetail').animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: reduce ? 0 : 450 });
+}
+$$('.lnode').forEach(n => {
+  n.addEventListener('click', () => { loopUser = true; showLoop(+n.dataset.i); });
+  n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); loopUser = true; showLoop(+n.dataset.i); } });
+});
+showLoop(0);
+setInterval(() => { if (!loopUser) showLoop((loopI + 1) % 3); }, 4500);
+
+/* ---------- teacher console ---------- */
+const LV = [['#26324F', '#A3AEC6', 'Not started'], ['#FF8A9B', '#3a0a12', 'Needs help'], ['#FFB547', '#2a1a00', 'Developing'], ['#5EE6C8', '#04211b', 'Secure']];
+const CONCEPTS = ['Sequences', 'Common diff.', 'nth term', 'Sum Sₙ', 'Word problems'];
+const STUDENTS = [
+  { name: 'Aarav', lv: [3, 3, 2, 1, 0], style: 'Seeing it (visuals)', hints: [2, 3, 3, 2, 1, 1], pattern: 'Uses hints well', next: 'nth term with the flower-bed visual' },
+  { name: 'Diya', lv: [3, 3, 3, 2, 2], style: 'Algebra first', hints: [1, 1, 0, 1, 0, 0], pattern: 'Independent', next: 'Sum of n terms, challenge set' },
+  { name: 'Kabir', lv: [3, 2, 1, 0, 0], style: 'Stories', hints: [3, 4, 5, 4, 5, 6], pattern: 'Stuck on nth term', next: 'Class 9 linear equations refresher' },
+  { name: 'Meera', lv: [3, 3, 3, 3, 2], style: 'Patterns', hints: [1, 0, 0, 1, 0, 0], pattern: 'Independent', next: 'Word problems, mixed' },
+  { name: 'Riya', lv: [3, 2, 1, 1, 0], style: 'Seeing it (visuals)', hints: [0, 0, 1, 0, 0, 0], pattern: 'Relies on answers', next: 'Hints only, full solutions off' },
+  { name: 'Rohan', lv: [3, 3, 2, 0, 0], style: 'Patterns', hints: [2, 2, 1, 2, 1, 1], pattern: 'Steady', next: 'Number-line view of nth term' },
+  { name: 'Sana', lv: [3, 3, 3, 2, 3], style: 'Algebra first', hints: [1, 1, 1, 0, 0, 0], pattern: 'Independent', next: 'Sum of n terms derivation' },
+  { name: 'Vikram', lv: [2, 1, 0, 0, 0], style: 'Not enough data yet', hints: [0, 0, 0, 0, 0, 0], pattern: 'Not using the tutor', next: 'Talk in class; start with the notebook' },
+];
+const heat = $('#heat');
+function renderHeat(){
+  heat.innerHTML = `<thead><tr><th scope="col">Student</th>${CONCEPTS.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>` +
+    STUDENTS.map((s, i) => `<tr data-i="${i}"><th scope="row"><button type="button">${s.name}</button></th>${s.lv.map((l, j) => `<td data-j="${j}" title="${s.name} · ${CONCEPTS[j]}: ${LV[l][2]}" style="background:${LV[l][0]}"></td>`).join('')}</tr>`).join('') + '</tbody>';
+  $$('tr[data-i] button', heat).forEach(b => b.onclick = () => showProfile(+b.closest('tr').dataset.i));
+}
+renderHeat();
+function spark(vals){
+  const max = Math.max(6, ...vals), w = 260, h = 46;
+  const pts = vals.map((v, i) => `${i / (vals.length - 1) * w},${h - 4 - v / max * (h - 10)}`).join(' ');
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="#FFB547" stroke-width="2"/></svg>`;
+}
+function showProfile(i){
+  const s = STUDENTS[i];
+  $$('tr[data-i]', heat).forEach(r => r.classList.toggle('sel', +r.dataset.i === i));
+  const p = $('#profile');
+  p.innerHTML = `<h3>Student path <button class="btn ghost small" type="button" id="closeProf">Close</button></h3>
+    <div class="big">${s.name}</div>
+    <dl class="kv"><dt>Learns best by</dt><dd>${s.style}</dd><dt>Pattern</dt><dd>${s.pattern}</dd><dt>Hints per session</dt><dd>${spark(s.hints)}</dd><dt>Suggested next</dt><dd style="color:var(--chalk)">${s.next}</dd></dl>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary small" type="button" id="assignBtn">Assign to ${s.name}</button><button class="btn ghost small" type="button" id="replayBtn">Replay last session</button></div>`;
+  p.classList.add('on'); $('#feedPanel').style.display = 'none';
+  $('#closeProf').onclick = () => { p.classList.remove('on'); $('#feedPanel').style.display = ''; $$('tr[data-i]', heat).forEach(r => r.classList.remove('sel')); };
+  $('#assignBtn').onclick = () => toast(`Added to ${s.name}'s learning path: ${s.next}`);
+  $('#replayBtn').onclick = () => { $('#lesson').scrollIntoView({ behavior: 'smooth' }); setTimeout(startLesson, 700); };
+}
+const FEED = [
+  ['#5EE6C8', 'Diya solved Exercise 5.2 Q4 with no hints'],
+  ['#FFB547', 'Kabir asked about the nth term for the 3rd time'],
+  ['#FF8A9B', 'Riya requested a full solution before trying'],
+  ['#7CC4FF', 'Aarav switched to the visual explanation and got it'],
+  ['#5EE6C8', 'Rohan: common difference now secure'],
+  ['#A99BFF', 'Sana asked how the sum formula is derived'],
+  ['#FFB547', 'Kabir sent back to Class 9 linear equations'],
+  ['#5EE6C8', 'Meera finished the word-problem set'],
+  ['#FF8A9B', 'Kabir used 7 m as the radius in the shed example'],
+  ['#7CC4FF', 'Aarav took the 3D shed apart and fixed his surface area'],
+];
+let fi = 0, teacherVisible = false;
+function pushFeed(){
+  const [c, t] = FEED[fi++ % FEED.length];
+  const li = document.createElement('li'); li.innerHTML = `<span class="dot" style="background:${c}"></span><span>${t}</span>`;
+  const f = $('#feed'); f.prepend(li); while (f.children.length > 5) f.lastElementChild.remove();
+  // a student's understanding moves up somewhere in the class
+  const s = STUDENTS[Math.random() * 7 | 0], j = s.lv.findIndex(l => l < 3);
+  if (j >= 0 && Math.random() < .6){
+    s.lv[j]++;
+    const td = heat.querySelector(`tr[data-i="${STUDENTS.indexOf(s)}"] td[data-j="${j}"]`);
+    td.style.background = LV[s.lv[j]][0]; td.title = `${s.name} · ${CONCEPTS[j]}: ${LV[s.lv[j]][2]}`;
+    td.classList.add('flash'); setTimeout(() => td.classList.remove('flash'), 600);
+  }
+}
+for (let k = 0; k < 3; k++) pushFeed();
+new IntersectionObserver(es => teacherVisible = es[0].isIntersecting).observe($('.console'));
+setInterval(() => { if (teacherVisible) pushFeed(); }, 3200);
+
+/* ---------- principle cards: spotlight + tilt ---------- */
+$$('.pc').forEach(c => {
+  c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
+    if (!reduce) c.style.transform = `rotateY(${(x / r.width - .5) * 8}deg) rotateX(${-(y / r.height - .5) * 8}deg)`;
+  });
+  c.addEventListener('pointerleave', () => c.style.transform = '');
+});
+
+/* ---------- presenter mode ---------- */
+const pBtn = $('#presentBtn');
+function setPresent(on){
+  document.body.classList.toggle('presenting', on); pBtn.setAttribute('aria-pressed', on);
+  if (on) toast('Presenting: use ← → to move between sections');
+}
+pBtn.onclick = () => setPresent(!document.body.classList.contains('presenting'));
+function currentSection(){ const y = scrollY + innerHeight * .35; let idx = 0; sections.forEach((s, i) => { if (s.offsetTop <= y) idx = i; }); return idx; }
+addEventListener('keydown', e => {
+  if (!document.body.classList.contains('presenting')) return;
+  if (/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
+  const i = currentSection();
+  if (['ArrowRight', 'PageDown', 'ArrowDown'].includes(e.key)){ e.preventDefault(); sections[Math.min(i + 1, sections.length - 1)].scrollIntoView({ behavior: 'smooth' }); }
+  else if (['ArrowLeft', 'PageUp', 'ArrowUp'].includes(e.key)){ e.preventDefault(); sections[Math.max(i - 1, 0)].scrollIntoView({ behavior: 'smooth' }); }
+  else if (e.key === 'f' || e.key === 'F'){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); }
+  else if (e.key === 'Escape') setPresent(false);
+});
+})();
+</script>
+</body>
+</html>
